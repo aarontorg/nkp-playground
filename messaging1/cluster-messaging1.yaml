@@ -1,0 +1,155 @@
+---
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  annotations:
+    caren.nutanix.com/cluster-uuid: 019d872a-0ecd-7e02-91fd-4390376367ca
+  labels:
+    cluster.x-k8s.io/provider: nutanix
+    konvoy.d2iq.io/cluster-name: messaging1
+    konvoy.d2iq.io/provider: nutanix
+  name: messaging1
+  namespace: messaging-22npk-49jmp
+spec:
+  clusterNetwork:
+    pods:
+      cidrBlocks:
+      - 192.168.0.0/16
+    services:
+      cidrBlocks:
+      - 10.96.0.0/12
+  controlPlaneEndpoint:
+    host: ""
+    port: 0
+  topology:
+    class: nkp-nutanix-v2.17.1
+    controlPlane:
+      metadata: {}
+      replicas: 3
+    variables:
+    - name: clusterConfig
+      value:
+        addons:
+          ccm:
+            credentials:
+              secretRef:
+                name: messaging1-pc-credentials
+            strategy: HelmAddon
+          clusterAutoscaler:
+            strategy: HelmAddon
+          cni:
+            provider: Cilium
+            strategy: HelmAddon
+          cosi:
+            strategy: HelmAddon
+          csi:
+            defaultStorage:
+              provider: nutanix
+              storageClassConfig: volume
+            providers:
+              nutanix:
+                credentials:
+                  secretRef:
+                    name: messaging1-pc-credentials-for-csi
+                storageClassConfigs:
+                  volume:
+                    allowExpansion: true
+                    parameters:
+                      csi.storage.k8s.io/fstype: ext4
+                      description: CSI StorageClass nutanix-volume for messaging1
+                      flashMode: DISABLED
+                      hypervisorAttached: ENABLED
+                      storageContainer: SelfServiceContainer
+                      storageType: NutanixVolumes
+                    reclaimPolicy: Delete
+                    volumeBindingMode: WaitForFirstConsumer
+                strategy: HelmAddon
+            snapshotController:
+              strategy: HelmAddon
+          konnectorAgent:
+            credentials:
+              secretRef:
+                name: messaging1-pc-credentials-for-konnector-agent
+          nfd:
+            strategy: HelmAddon
+          registry:
+            provider: CNCF Distribution
+          serviceLoadBalancer:
+            configuration:
+              addressRanges:
+              - end: 10.38.34.13
+                start: 10.38.34.13
+            provider: MetalLB
+        controlPlane:
+          autoRenewCertificates:
+            daysBeforeExpiry: 180
+          nodeRegistration:
+            ignorePreflightErrors:
+            - SystemVerification
+          nutanix:
+            machineDetails:
+              bootType: uefi
+              cluster:
+                name: PHX-POC262
+                type: name
+              image:
+                name: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017
+                type: name
+              memorySize: 16Gi
+              subnets:
+              - name: primary-PHX-POC262
+                type: name
+              systemDiskSize: 80Gi
+              vcpuSockets: 4
+              vcpusPerSocket: 1
+        dns:
+          coreDNS: {}
+        encryptionAtRest:
+          providers:
+          - secretbox: {}
+        kubeProxy:
+          mode: disabled
+        nutanix:
+          controlPlaneEndpoint:
+            host: 10.38.34.12
+            port: 6443
+            virtualIP:
+              provider: KubeVIP
+          prismCentralEndpoint:
+            credentials:
+              secretRef:
+                name: messaging1-pc-credentials
+            insecure: true
+            url: https://10.38.34.7:9440
+    version: v1.34.3
+    workers:
+      machineDeployments:
+      - class: default-worker
+        metadata:
+          annotations:
+            cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "4"
+            cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "4"
+        name: md-0
+        variables:
+          overrides:
+          - name: workerConfig
+            value:
+              nodeRegistration:
+                ignorePreflightErrors:
+                - SystemVerification
+              nutanix:
+                machineDetails:
+                  bootType: uefi
+                  cluster:
+                    name: PHX-POC262
+                    type: name
+                  image:
+                    name: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017
+                    type: name
+                  memorySize: 32Gi
+                  subnets:
+                  - name: primary-PHX-POC262
+                    type: name
+                  systemDiskSize: 80Gi
+                  vcpuSockets: 8
+                  vcpusPerSocket: 1
