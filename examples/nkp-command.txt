@@ -1,0 +1,14 @@
+nkp create cluster nutanix -c $NKP_CLUSTER_NAME \
+  --insecure \
+  --namespace $NKP_WORKSPACE_NAMESPACE \
+  --kind-cluster-image mesosphere/konvoy-bootstrap:v$NKP_VERSION \
+  --endpoint https://$NUTANIX_ENDPOINT:$NUTANIX_PORT \
+  --kubernetes-service-load-balancer-ip-range $NKP_LB_IP_RANGE \
+  --control-plane-endpoint-ip $NKP_CONTROL_PLANE_ENDPOINT_IP \
+  --control-plane-prism-element-cluster $NKP_NUTANIX_PRISM_ELEMENT_CLUSTER_NAME \
+  --control-plane-subnets $NKP_NUTANIX_SUBNET_NAME \
+  --worker-prism-element-cluster $NKP_NUTANIX_PRISM_ELEMENT_CLUSTER_NAME \
+  --worker-subnets $NKP_NUTANIX_SUBNET_NAME \
+  --vm-image $NKP_NUTANIX_MACHINE_TEMPLATE_IMAGE_NAME \
+  --csi-storage-container $NKP_NUTANIX_STORAGE_CONTAINER_NAME \
+  --dry-run -o yaml --output-directory .
