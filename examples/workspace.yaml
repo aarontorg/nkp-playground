@@ -1,0 +1,31 @@
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Workspace
+metadata:
+  annotations:
+    kommander.mesosphere.io/display-name: Default Workspace
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"workspaces.kommander.mesosphere.io/v1alpha1","kind":"Workspace","metadata":{"annotations":{"kommander.mesosphere.io/display-name":"Default Workspace"},"labels":{"caren.nutanix.com/namespace-sync":""},"name":"default-workspace"},"spec":{"namespaceName":"kommander-default-workspace"}}
+    workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
+  creationTimestamp: "2026-04-05T02:49:44Z"
+  finalizers:
+  - kommander.mesosphere.io/workspacekustomization
+  - workspaces.kommander.mesosphere.io/workspace
+  generation: 1
+  labels:
+    caren.nutanix.com/namespace-sync: ""
+  name: default-workspace
+  resourceVersion: "16618"
+  uid: 03d6a7f1-b874-4621-abde-15d3a581c5e2
+spec:
+  clusterLabels:
+    workspaces.kommander.mesosphere.io/workspace-ref: 79036f82-f345-403d-94ac-68fb2ce2ea7a
+  namespaceName: kommander-default-workspace
+  version: v2.17.0
+status:
+  conditions:
+  - lastTransitionTime: "2026-04-05T02:49:44Z"
+    status: "False"
+    type: WorkspaceNamespaceConflict
+  namespaceRef:
+    name: kommander-default-workspace
+  version: v2.17.0

@@ -1,0 +1,27 @@
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Project
+metadata:
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: torgspaceproject1
+  creationTimestamp: "2026-04-06T18:00:31Z"
+  finalizers:
+  - workspaces.kommander.mesosphere.io/project
+  - kommander.mesosphere.io/projectkustomization
+  generation: 1
+  name: torgspaceproject1-hh79p
+  namespace: torgspace-xxjgc-bfnm8
+  resourceVersion: "5496404"
+  uid: 4efb9031-2dce-46cb-9753-d4f2ebbc0ebc
+spec:
+  namespaceName: torgspaceproject1-hh79p
+  placement: {}
+  workspaceRef:
+    name: torgspace-xxjgc
+status:
+  conditions:
+  - lastTransitionTime: "2026-04-06T18:00:31Z"
+    status: "False"
+    type: ProjectNamespaceConflict
+  namespaceRef:
+    name: torgspaceproject1-hh79p
