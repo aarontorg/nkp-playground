@@ -1,0 +1,837 @@
+apiVersion: v1
+items:
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: cert-manager
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65488"
+    uid: d4dd7744-2051-48d2-b598-bab89928fedd
+  spec:
+    appRef:
+      appID: cert-manager
+      kind: ClusterApp
+      name: cert-manager-1.18.2
+    clusterConfigOverrides:
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: cilium-hubble-relay-traefik
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65518"
+    uid: 35439764-9da7-43a7-8191-d2f7ea7f57f1
+  spec:
+    appRef:
+      appID: cilium-hubble-relay-traefik
+      kind: ClusterApp
+      name: cilium-hubble-relay-traefik-0.0.5
+    clusterConfigOverrides:
+    - appVersion: 0.0.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T15:05:59Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 2
+    name: external-secrets
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "185778"
+    uid: 60ca4c38-b5ee-4f74-b405-b526ae8f03f4
+  spec:
+    appRef:
+      appID: external-secrets
+      kind: ClusterApp
+      name: external-secrets-0.20.2
+    clusterConfigOverrides:
+    - appVersion: 0.20.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T15:06:00Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T15:06:00Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 2
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: gatekeeper
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65520"
+    uid: f73dd265-0176-47af-be2f-da151849874d
+  spec:
+    appRef:
+      appID: gatekeeper
+      kind: ClusterApp
+      name: gatekeeper-3.20.1
+    clusterConfigOverrides:
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: gateway-api-crds
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65487"
+    uid: c15cde59-2d60-499e-a856-aea1609402c1
+  spec:
+    appRef:
+      appID: gateway-api-crds
+      kind: ClusterApp
+      name: gateway-api-crds-1.11.1
+    clusterConfigOverrides:
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T16:06:20Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 2
+    name: grafana-logging
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "302277"
+    uid: 88d39759-af4f-4ee9-90fa-a493a8cfb568
+  spec:
+    appRef:
+      appID: grafana-logging
+      kind: ClusterApp
+      name: grafana-logging-10.1.2
+    clusterConfigOverrides:
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T16:06:20Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T16:06:20Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 2
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T14:16:54Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 2
+    name: grafana-loki
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "86376"
+    uid: 19ee792e-3ee9-4429-b330-cb7b3345c2d5
+  spec:
+    appRef:
+      appID: grafana-loki
+      kind: ClusterApp
+      name: grafana-loki-0.80.5
+    clusterConfigOverrides:
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:16:54Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:16:54Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 2
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: karma-traefik
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65473"
+    uid: 06507a78-cfd0-4dd1-abbd-308ddb799fe2
+  spec:
+    appRef:
+      appID: karma-traefik
+      kind: ClusterApp
+      name: karma-traefik-0.0.4
+    clusterConfigOverrides:
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: kommander-flux
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65517"
+    uid: 210a8fce-9320-4eab-b7bc-14fef75cac7d
+  spec:
+    appRef:
+      appID: kommander-flux
+      kind: ClusterApp
+      name: kommander-flux-2.7.2
+    clusterConfigOverrides:
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T14:17:21Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 2
+    name: kube-oidc-proxy
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "86999"
+    uid: c721d72e-c127-4dd9-94b9-8de11a7e052f
+  spec:
+    appRef:
+      appID: kube-oidc-proxy
+      kind: ClusterApp
+      name: kube-oidc-proxy-0.3.7
+    clusterConfigOverrides:
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: kube-oidc-proxy-messaging1
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - clusterConfigOverridesRef:
+        name: kube-oidc-proxy-messaging1
+      conditions:
+      - lastTransitionTime: "2026-04-13T14:17:22Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:17:22Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 2
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: kube-prometheus-stack
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65431"
+    uid: 902fa847-0a9f-486a-aab8-f69657c478fe
+  spec:
+    appRef:
+      appID: kube-prometheus-stack
+      kind: ClusterApp
+      name: kube-prometheus-stack-78.4.0
+    clusterConfigOverrides:
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:49Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:49Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: kubernetes-dashboard
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65543"
+    uid: 61f11418-b10a-448b-ba0a-71776785302e
+  spec:
+    appRef:
+      appID: kubernetes-dashboard
+      kind: ClusterApp
+      name: kubernetes-dashboard-7.14.0
+    clusterConfigOverrides:
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: opencost
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65667"
+    uid: 21e793e5-f2e2-4d52-98da-63dca4532e76
+  spec:
+    appRef:
+      appID: opencost
+      kind: ClusterApp
+      name: opencost-2.4.0
+    clusterConfigOverrides:
+    - appVersion: 2.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:52Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:52Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: prometheus-adapter
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65446"
+    uid: 979879ca-7e99-40b5-903d-2e8ddc065b7e
+  spec:
+    appRef:
+      appID: prometheus-adapter
+      kind: ClusterApp
+      name: prometheus-adapter-5.2.0
+    clusterConfigOverrides:
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:49Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:49Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: prometheus-thanos-traefik
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65455"
+    uid: 9a6b8462-9038-4b3d-ad33-f0f862fe132d
+  spec:
+    appRef:
+      appID: prometheus-thanos-traefik
+      kind: ClusterApp
+      name: prometheus-thanos-traefik-0.0.4
+    clusterConfigOverrides:
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:49Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:49Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: reloader
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65515"
+    uid: ccfc62b6-3640-4d99-92f7-10d8c40d1fbf
+  spec:
+    appRef:
+      appID: reloader
+      kind: ClusterApp
+      name: reloader-2.2.5
+    clusterConfigOverrides:
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:50Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T13:57:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 3
+    name: traefik
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "65584"
+    uid: 9a5242de-b9d3-492f-aab6-ed433ee95114
+  spec:
+    appRef:
+      appID: traefik
+      kind: ClusterApp
+      name: traefik-37.1.2
+    clusterConfigOverrides:
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-13T14:07:51Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:07:51Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 3
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-13T14:17:21Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 2
+    name: traefik-forward-auth-kommander
+    namespace: messaging-22npk-49jmp
+    resourceVersion: "86994"
+    uid: fc6d146a-057d-408d-b4d1-95c60079e568
+  spec:
+    appRef:
+      appID: traefik-forward-auth
+      kind: ClusterApp
+      name: traefik-forward-auth-0.3.16
+    clusterConfigOverrides:
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - messaging1
+      configMapName: traefik-forward-auth-kommander-messaging1
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - messaging1
+  status:
+    clusters:
+    - clusterConfigOverridesRef:
+        name: traefik-forward-auth-kommander-messaging1
+      conditions:
+      - lastTransitionTime: "2026-04-13T14:17:21Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-13T14:17:21Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: messaging1
+    observedGeneration: 2
+kind: List
+metadata:
+  resourceVersion: ""
