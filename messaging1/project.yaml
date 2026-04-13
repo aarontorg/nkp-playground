@@ -1,0 +1,29 @@
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Project
+metadata:
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: messages
+  creationTimestamp: "2026-04-13T14:22:14Z"
+  finalizers:
+  - kommander.mesosphere.io/projectkustomization
+  - workspaces.kommander.mesosphere.io/project
+  generation: 1
+  name: messages-ks9gg
+  namespace: messaging-22npk-49jmp
+  resourceVersion: "98504"
+  uid: c0833b42-6a37-4891-9069-9f8ac8f5f73a
+spec:
+  namespaceName: messages-ks9gg
+  placement:
+    clusters:
+    - name: messaging1
+  workspaceRef:
+    name: messaging-22npk
+status:
+  conditions:
+  - lastTransitionTime: "2026-04-13T14:22:14Z"
+    status: "False"
+    type: ProjectNamespaceConflict
+  namespaceRef:
+    name: messages-ks9gg
