@@ -2,14 +2,12 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  annotations:
-    caren.nutanix.com/cluster-uuid: 019d872a-0ecd-7e02-91fd-4390376367ca
   labels:
     cluster.x-k8s.io/provider: nutanix
-    konvoy.d2iq.io/cluster-name: messaging1
+    konvoy.d2iq.io/cluster-name: yamltest #XP
     konvoy.d2iq.io/provider: nutanix
-  name: messaging1
-  namespace: messaging-22npk-49jmp
+  name: yamltest
+  namespace: messaging-22npk-49jmp #XP
 spec:
   clusterNetwork:
     pods:
@@ -33,7 +31,7 @@ spec:
           ccm:
             credentials:
               secretRef:
-                name: messaging1-pc-credentials
+                name: yamltest-pc-credentials
             strategy: HelmAddon
           clusterAutoscaler:
             strategy: HelmAddon
@@ -50,13 +48,13 @@ spec:
               nutanix:
                 credentials:
                   secretRef:
-                    name: messaging1-pc-credentials-for-csi
+                    name: yamltest-pc-credentials-for-csi
                 storageClassConfigs:
                   volume:
                     allowExpansion: true
                     parameters:
                       csi.storage.k8s.io/fstype: ext4
-                      description: CSI StorageClass nutanix-volume for messaging1
+                      description: CSI StorageClass nutanix-volume for yamltest
                       flashMode: DISABLED
                       hypervisorAttached: ENABLED
                       storageContainer: SelfServiceContainer
@@ -69,7 +67,7 @@ spec:
           konnectorAgent:
             credentials:
               secretRef:
-                name: messaging1-pc-credentials-for-konnector-agent
+                name: yamltest-pc-credentials-for-konnector-agent
           nfd:
             strategy: HelmAddon
           registry:
@@ -77,8 +75,8 @@ spec:
           serviceLoadBalancer:
             configuration:
               addressRanges:
-              - end: 10.38.34.13
-                start: 10.38.34.13
+              - end: 10.38.34.13 # Changed
+                start: 10.38.34.13 # Changed
             provider: MetalLB
         controlPlane:
           autoRenewCertificates:
@@ -90,14 +88,14 @@ spec:
             machineDetails:
               bootType: uefi
               cluster:
-                name: PHX-POC262
+                name: PHX-POC262 #XP
                 type: name
               image:
-                name: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017
+                name: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017 #XP
                 type: name
               memorySize: 16Gi
               subnets:
-              - name: primary-PHX-POC262
+              - name: primary-PHX-POC262 #XP
                 type: name
               systemDiskSize: 80Gi
               vcpuSockets: 4
@@ -111,17 +109,17 @@ spec:
           mode: disabled
         nutanix:
           controlPlaneEndpoint:
-            host: 10.38.34.12
+            host: 10.38.34.12 #XP
             port: 6443
             virtualIP:
               provider: KubeVIP
           prismCentralEndpoint:
             credentials:
               secretRef:
-                name: messaging1-pc-credentials
+                name: yamltest-pc-credentials #XP
             insecure: true
-            url: https://10.38.34.7:9440
-    version: v1.34.3
+            url: https://10.38.34.7:9440 #XP
+    version: v1.34.3 #XP
     workers:
       machineDeployments:
       - class: default-worker
@@ -141,14 +139,14 @@ spec:
                 machineDetails:
                   bootType: uefi
                   cluster:
-                    name: PHX-POC262
+                    name: PHX-POC262 #XP
                     type: name
                   image:
-                    name: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017
+                    name: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017 #XP
                     type: name
                   memorySize: 32Gi
                   subnets:
-                  - name: primary-PHX-POC262
+                  - name: primary-PHX-POC262 #XP
                     type: name
                   systemDiskSize: 80Gi
                   vcpuSockets: 8
