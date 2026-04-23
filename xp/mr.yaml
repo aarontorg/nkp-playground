@@ -1,0 +1,16 @@
+apiVersion: kubernetes.crossplane.io/v1alpha2
+kind: Object
+metadata:
+  name: zzz
+  namespace: crossplane-system
+spec:
+  deletionPolicy: Delete
+  providerConfigRef:
+    name: kubernetes-provider
+  forProvider:
+    manifest:
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: zzz
+        namespace: crossplane-system

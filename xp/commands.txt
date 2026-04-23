@@ -1,0 +1,1 @@
+kubectl create clusterrolebinding crossplane-admin-binding2  --clusterrole=cluster-admin   --serviceaccount=crossplane-system:crossplane-contrib-provider-kubernetes-f6665ef36536
