@@ -5,7 +5,7 @@ metadata:
 spec:
   crossplane:
     compositionRef:
-      name: nkp-real
+      name: nkp-realm
   id: torg
   nkpVersion: v2.17.1
   pc:

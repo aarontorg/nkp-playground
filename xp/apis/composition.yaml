@@ -41,9 +41,10 @@ spec:
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
                 transforms:
-                  - string:
+                  - type: string
+                    string:
+                      type: Format
                       fmt: '%s-workspace'
-                    type: string
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.annotations["kommander.mesosphere.io/display-name"]
               - fromFieldPath: spec.id

@@ -3,7 +3,7 @@ kind: CompositeResourceDefinition
 metadata:
   name: realms.nkp.io
 spec:
-  scope: Namespaced
+  #scope: Namespaced
   group: nkp.io
   names:
     kind: Realm
