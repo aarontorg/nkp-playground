@@ -1,5 +1,5 @@
-apiVersion: nkp.iov1alpha1
-kind: XRealm
+apiVersion: nkp.io/v1alpha1
+kind: Realm
 metadata:
   name: realm1
 spec:

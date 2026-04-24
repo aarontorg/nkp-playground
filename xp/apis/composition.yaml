@@ -9,7 +9,6 @@ spec:
     kind: Realm
   mode: Pipeline
   pipeline:
-  resources:
     - step: patch-and-transform
       functionRef:
         name: function-patch-and-transform
