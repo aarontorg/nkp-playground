@@ -1,11 +1,11 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: xrealms.nkp.io
+  name: realms.nkp.io
 spec:
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: XRealm
+    kind: Realm
   mode: Resources #Pipeline
     #pipeline:
     #- step: patch-and-transform
