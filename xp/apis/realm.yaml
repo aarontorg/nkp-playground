@@ -3,6 +3,9 @@ kind: Realm
 metadata:
   name: realm1
 spec:
+  crossplane:
+    compositionRef:
+      name: nkp-real
   id: torg
   nkpVersion: v2.17.1
   pc:
