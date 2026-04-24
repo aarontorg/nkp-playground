@@ -1,57 +1,57 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: realms.nkp.io
+  name: xrealms.nkp.io
 spec:
-  #writeConnectionSecretsToNamespace: crossplane-system
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: Realm
-  mode: Pipeline
-  pipeline:
-    - step: patch-and-transform
-      functionRef:
-        name: function-patch-and-transform
-      input:
-        apiVersion: pt.fn.crossplane.io/v1beta1
-        kind: Resources
-        resources:
-          - name: workspace
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
+    kind: XRealm
+  mode: Resources #Pipeline
+    #pipeline:
+    #- step: patch-and-transform
+    #  functionRef:
+    #    name: function-patch-and-transform
+    #  input:
+    #    apiVersion: pt.fn.crossplane.io/v1beta1
+    #    kind: Resources
+  resources:
+    - name: workspace
+      base:
+        apiVersion: kubernetes.crossplane.io/v1alpha2
+        kind: Object
+        spec:
+          providerConfigRef:
+            name: kubernetes-provider
+          forProvider:
+            manifest:
+              apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+              kind: Workspace
+              metadata:
+                annotations:
+                  kommander.mesosphere.io/description: ""
+                  workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
+                labels:
+                  caren.nutanix.com/namespace-sync: ""
               spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                  deletionPolicy: Delete
-                  forProvider:
-                    manifest:
-                      apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
-                      kind: Workspace
-                      metadata:
-                        annotations:
-                          kommander.mesosphere.io/description: ""
-                          workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
-                        labels:
-                          caren.nutanix.com/namespace-sync: ""
-                      spec:
-                        namespaceName: ""
-                        version: "" #v2.17.1
-            patches:
-              - fromFieldPath: spec.id
-                toFieldPath: spec.forProvider.manifest.metadata.name
-              - fromFieldPath: spec.id
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      fmt: '%s-workspace'
-                    type: string
-              - fromFieldPath: spec.id
-                toFieldPath: spec.forProvider.manifest.annotations["kommander.mesosphere.io/display-name"]
-              - fromFieldPath: spec.id
-                toFieldPath: spec.forProvider.manifest.labels["workspaces.kommander.mesosphere.io/workspace-name"]
-              - fromFieldPath: spec.nkpVersion
-                toFieldPath: spec.forProvider.manifest.spec.version
+                namespaceName: ""
+                version: "" #v2.17.1
+      patches:
+        - fromFieldPath: spec.id
+          toFieldPath: spec.forProvider.manifest.metadata.name
+        - fromFieldPath: spec.id
+          toFieldPath: metadata.name
+          transforms:
+            - string:
+                fmt: '%s-workspace'
+              type: string
+        - fromFieldPath: spec.id
+          toFieldPath: spec.forProvider.manifest.annotations["kommander.mesosphere.io/display-name"]
+        - fromFieldPath: spec.id
+          toFieldPath: spec.forProvider.manifest.labels["workspaces.kommander.mesosphere.io/workspace-name"]
+        - fromFieldPath: spec.nkpVersion
+          toFieldPath: spec.forProvider.manifest.spec.version
+        - fromFieldPath: spec.id
+          toFieldPath: spec.forProvider.manifest.spec.namespaceName
     # - name: pcCreds
     #   base:
     #     apiVersion: kubernetes.crossplane.io/v1alpha2
