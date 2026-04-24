@@ -1,0 +1,7 @@
+apiVersion: nkp.iov1alpha1
+kind: XRealm
+metadata:
+  name: realm1
+spec:
+  id: torg
+  nkpVersion: v2.17.1
