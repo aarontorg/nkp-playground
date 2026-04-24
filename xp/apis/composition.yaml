@@ -38,21 +38,21 @@ spec:
                       spec:
                         namespaceName: ""
                         version: "" #v2.17.1
-           patches:
-             - fromFieldPath: spec.id
-               toFieldPath: spec.forProvider.manifest.metadata.name
-             - fromFieldPath: spec.id
-               toFieldPath: metadata.name
-               transforms:
-                 - string:
-                     fmt: '%s-workspace'
-                   type: string
-             - fromFieldPath: spec.id
-               toFieldPath: spec.forProvider.manifest.annotations["kommander.mesosphere.io/display-name"]
-             - fromFieldPath: spec.id
-               toFieldPath: spec.forProvider.manifest.labels["workspaces.kommander.mesosphere.io/workspace-name"]
-             - fromFieldPath: spec.nkpVersion
-               toFieldPath: spec.forProvider.manifest.spec.version
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.name
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      fmt: '%s-workspace'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.annotations["kommander.mesosphere.io/display-name"]
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.labels["workspaces.kommander.mesosphere.io/workspace-name"]
+              - fromFieldPath: spec.nkpVersion
+                toFieldPath: spec.forProvider.manifest.spec.version
     # - name: pcCreds
     #   base:
     #     apiVersion: kubernetes.crossplane.io/v1alpha2
