@@ -91,7 +91,7 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
               - type: CombineFromComposite
-                toFieldPath: spec.forProvider.userData
+                toFieldPath: spec.forProvider.manifest.data.key
                 policy:
                   fromFieldPath: Required
                 combine:
