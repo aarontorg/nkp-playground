@@ -1,9 +1,9 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: devspace.nkp.io
+  name: devspaces.nkp.io
 spec:
-  scope: Cluster-scoped
+  scope: Cluster
   group: nkp.io
   names:
     kind: Devspace

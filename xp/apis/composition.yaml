@@ -46,9 +46,9 @@ spec:
                       type: Format
                       fmt: '%s-workspace'
               - fromFieldPath: spec.id
-                toFieldPath: spec.forProvider.manifest.annotations["kommander.mesosphere.io/display-name"]
+                toFieldPath: spec.forProvider.manifest.metadata.annotations["kommander.mesosphere.io/display-name"]
               - fromFieldPath: spec.id
-                toFieldPath: spec.forProvider.manifest.labels["workspaces.kommander.mesosphere.io/workspace-name"]
+                toFieldPath: spec.forProvider.manifest.metadata.labels["workspaces.kommander.mesosphere.io/workspace-name"]
               - fromFieldPath: spec.nkpVersion
                 toFieldPath: spec.forProvider.manifest.spec.version
               - fromFieldPath: spec.id
