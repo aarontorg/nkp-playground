@@ -97,8 +97,6 @@ spec:
                 combine:
                   variables:
                     - fromFieldPath: spec.pc.key
-                    - fromFieldPath: status.awsInfo.data.password
-                    - fromFieldPath: spec.id
                   strategy: string
                   string:
                     fmt: |
