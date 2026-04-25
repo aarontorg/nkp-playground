@@ -76,6 +76,13 @@ spec:
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-credentials-for-csi'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
                 transforms:
