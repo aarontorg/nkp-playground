@@ -79,7 +79,7 @@ spec:
                 transforms:
                   - string:
                       type: Format
-                      fmt: '%s-pc-credentials-for-csi'
+                      fmt: '%s-pc-credentials'
                     type: string
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
@@ -98,7 +98,7 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
               - type: CombineFromComposite
-                toFieldPath: spec.forProvider.manifest.data.key
+                toFieldPath: spec.forProvider.manifest.data.credentials
                 policy:
                   fromFieldPath: Required
                 combine:
