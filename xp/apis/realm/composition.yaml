@@ -122,4 +122,4 @@ spec:
                   - type: string
                     string:
                       type: Convert
-                      fmt: ToBase64
+                      convert: ToBase64
