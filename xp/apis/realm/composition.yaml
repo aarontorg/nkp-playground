@@ -88,7 +88,7 @@ spec:
                 transforms:
                   - string:
                       type: Format
-                      fmt: '%s-csi-secret'
+                      fmt: '%s-pc-secret'
                     type: string
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
