@@ -1,11 +1,11 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: realm
+  name: devspace
 spec:
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: Realm
+    kind: Devspace
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
@@ -24,12 +24,17 @@ spec:
                   name: kubernetes-provider
                 forProvider:
                   manifest:
-                    apiVersion: nkp.io/v1alpha1
-                    kind: Devspace
+                    apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+                    kind: Workspace
+                    metadata:
+                      annotations:
+                        kommander.mesosphere.io/description: ""
+                        workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
+                      labels:
+                        caren.nutanix.com/namespace-sync: ""
                     spec:
-                      crossplane:
-                        compositionRef:
-                          name: devspace
+                      namespaceName: ""
+                      version: "" #v2.17.1
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.name
@@ -40,10 +45,14 @@ spec:
                     string:
                       type: Format
                       fmt: '%s-workspace'
-              - fromFieldPath: spec.nkpVersion
-                toFieldPath: spec.nkpVersion
               - fromFieldPath: spec.id
-                toFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.annotations["kommander.mesosphere.io/display-name"]
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.labels["workspaces.kommander.mesosphere.io/workspace-name"]
+              - fromFieldPath: spec.nkpVersion
+                toFieldPath: spec.forProvider.manifest.spec.version
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.namespaceName
     # - name: pcCreds
     #   base:
     #     apiVersion: kubernetes.crossplane.io/v1alpha2

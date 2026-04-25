@@ -1,13 +1,13 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: realm.nkp.io
+  name: devspaces.nkp.io
 spec:
-  scope: Namespaced
+  scope: Cluster
   group: nkp.io
   names:
-    kind: Realm
-    plural: realms
+    kind: Devspace
+    plural: devspaces
   versions:
     - name: v1alpha1
       served: true
