@@ -106,6 +106,7 @@ spec:
                     - fromFieldPath: spec.pc.key
                   strategy: string
                   string:
+                    convert: ToBase64
                     fmt: |
                       [
                         {
