@@ -28,9 +28,9 @@ spec:
                   properties:
                     key:
                       type: string
-                #     url:
-                #       type: string
-                #     pcClusterName:
+                    ipAddress:
+                      type: string
+                     #pcClusterName:
                 #       type: string
                 #     pcSubNetName:
                 #       type: string
