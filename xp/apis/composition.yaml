@@ -1,11 +1,11 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: nkp-realm
+  name: devspace
 spec:
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: Realm
+    kind: Devspace
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
