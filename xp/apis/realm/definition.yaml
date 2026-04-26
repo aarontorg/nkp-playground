@@ -38,7 +38,7 @@ spec:
                     - key
                     - ipAddress
                     - clusterName
-                    - subNetName
+                    - subnetName
                 k8sImageName:
                   type: string
                 k8sVersion:
