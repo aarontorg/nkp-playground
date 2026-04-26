@@ -456,4 +456,4 @@ spec:
               - fromFieldPath: spec.pc.subnetName
                 toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.subnets[0].name
               - fromFieldPath: spec.k8sImageName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].variables.overrides[0].value.nutanix.machineDetails.image
+                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image
