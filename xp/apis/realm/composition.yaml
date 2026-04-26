@@ -347,7 +347,6 @@ spec:
                                   secretRef:
                                     name: patch #XP
                                 insecure: true
-                                url: patch #XP
                         version: patch #XP
                         workers:
                           machineDeployments:
