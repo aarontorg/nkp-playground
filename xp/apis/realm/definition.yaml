@@ -59,7 +59,7 @@ spec:
               required:
                 - id
                 - pc
-                - image
+                - k8sImageName
                 - k8sVersion
                 - loadBalancer
             status:
