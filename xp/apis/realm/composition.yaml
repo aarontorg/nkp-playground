@@ -449,7 +449,7 @@ spec:
                       type: Format
                       fmt: '%s-pc-credentials'
               - fromFieldPath: spec.pc.ipAddress
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.url
                 transforms:
                   - type: string
                     string:
