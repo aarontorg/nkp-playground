@@ -430,7 +430,7 @@ spec:
               - fromFieldPath: spec.pc.clusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.name
               - fromFieldPath: spec.k8sImageName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.image
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.image.name
               - fromFieldPath: spec.pc.subnetName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.subnets[0].name
               - fromFieldPath: spec.loadBalancer.vip
@@ -456,4 +456,4 @@ spec:
               - fromFieldPath: spec.pc.subnetName
                 toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.subnets[0].name
               - fromFieldPath: spec.k8sImageName
-                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image
+                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image.name
