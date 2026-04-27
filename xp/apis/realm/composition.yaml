@@ -662,3 +662,83 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
                     type: string
+          - name: app-gatekeeper
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: grafana-logging
+                    spec:
+                      appRef:
+                        appID: grafana-logging
+                        kind: ClusterApp
+                        name: grafana-logging-10.1.2
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-grafana-logging'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
+          - name: app-gatekeeper
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: grafana-loki
+                    spec:
+                      appRef:
+                        appID: grafana-loki
+                        kind: ClusterApp
+                        name: grafana-loki-0.80.5
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-grafana-loki'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
