@@ -862,3 +862,128 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
                     type: string
+          - name: app-prometheusAdapter
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: prometheus-adapter
+                      namespace: nkp-flux-provisioned-phvwv-jjxpb
+                      resourceVersion: "1909058830"
+                      uid: 97d0db7c-bf4c-4757-8812-5ebaad474432
+                    spec:
+                      appRef:
+                        appID: prometheus-adapter
+                        kind: ClusterApp
+                        name: prometheus-adapter-5.2.0
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-prom-adapter'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
+          - name: app-prometheusThanosTraefik
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: prometheus-thanos-traefik
+                      appRef:
+                        appID: prometheus-thanos-traefik
+                        kind: ClusterApp
+                        name: prometheus-thanos-traefik-0.0.4
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-prom-thanos-traefik'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
+          - name: app-kubePrometheusStack
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: kube-prometheus-stack
+                      namespace: nkp-flux-provisioned-phvwv-jjxpb
+                      resourceVersion: "1909058835"
+                      uid: 9e521a05-7b74-4a95-8ecd-38ffaf456c98
+                    spec:
+                      appRef:
+                        appID: kube-prometheus-stack
+                        kind: ClusterApp
+                        name: kube-prometheus-stack-78.4.0
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-kube-prom-stack'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
