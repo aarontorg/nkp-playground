@@ -1,0 +1,3316 @@
+apiVersion: v1
+items:
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:29Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 21
+    name: cert-manager
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058831"
+    uid: 126097a2-d2db-46bb-8c72-0a8e95969ca1
+  spec:
+    appRef:
+      appID: cert-manager
+      kind: ClusterApp
+      name: cert-manager-1.18.2
+    clusterConfigOverrides:
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.18.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:12Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:12Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:12Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 21
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:28:51Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: fluent-bit
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058840"
+    uid: 9fc32246-fcb6-4ae6-a172-81890ad3f62b
+  spec:
+    appRef:
+      appID: fluent-bit
+      kind: ClusterApp
+      name: fluent-bit-0.54.0
+    clusterConfigOverrides:
+    - appVersion: 0.54.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.54.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 0.54.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 0.54.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.54.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 0.54.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:29Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 22
+    name: gatekeeper
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058841"
+    uid: 3473e072-e2b8-46e9-8812-41a4faf2e9c8
+  spec:
+    appRef:
+      appID: gatekeeper
+      kind: ClusterApp
+      name: gatekeeper-3.20.1
+    clusterConfigOverrides:
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 3.20.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 22
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2025-03-17T14:19:58Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 19
+    name: gateway-api-crds
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058844"
+    uid: 1022cf21-3ce9-4169-8b2d-936edd6c483b
+  spec:
+    appRef:
+      appID: gateway-api-crds
+      kind: ClusterApp
+      name: gateway-api-crds-1.11.1
+    clusterConfigOverrides:
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.11.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 19
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:28:38Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 21
+    name: grafana-logging
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058808"
+    uid: 0dabdd66-d91a-4992-b532-d898680226e8
+  spec:
+    appRef:
+      appID: grafana-logging
+      kind: ClusterApp
+      name: grafana-logging-10.1.2
+    clusterConfigOverrides:
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 10.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 21
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:28:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 19
+    name: grafana-loki
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058809"
+    uid: d3da440e-42d2-4dba-8aa5-dcc2d46e9b9d
+  spec:
+    appRef:
+      appID: grafana-loki
+      kind: ClusterApp
+      name: grafana-loki-0.80.5
+    clusterConfigOverrides:
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 0.80.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:14Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:14Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:14Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 19
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2025-01-14T19:16:50Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 23
+    name: istio
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058834"
+    uid: c16a5ed3-3ee7-47e9-936f-9a8ae2aba555
+  spec:
+    appRef:
+      appID: istio
+      kind: ClusterApp
+      name: istio-1.23.5
+    clusterConfigOverrides:
+    - appVersion: 1.23.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.23.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.23.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.23.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.23.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.23.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 23
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:29Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: karma-traefik
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058828"
+    uid: f1eec267-af32-4543-9948-bc825ee64780
+  spec:
+    appRef:
+      appID: karma-traefik
+      kind: ClusterApp
+      name: karma-traefik-0.0.4
+    clusterConfigOverrides:
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:15Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2025-01-14T19:17:17Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 23
+    name: kiali
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058818"
+    uid: 5aec2f65-b570-4573-b482-c526ab7d2a21
+  spec:
+    appRef:
+      appID: kiali
+      kind: ClusterApp
+      name: kiali-2.18.0
+    clusterConfigOverrides:
+    - appVersion: 2.18.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.18.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 2.18.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 2.18.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.18.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 2.18.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 23
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2025-01-14T19:17:36Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 22
+    name: knative
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058811"
+    uid: 2a8f0adb-e024-452d-98e7-b9d8e32c3e86
+  spec:
+    appRef:
+      appID: knative
+      kind: ClusterApp
+      name: knative-1.19.5
+    clusterConfigOverrides:
+    - appVersion: 1.19.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.19.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.19.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.19.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.19.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.19.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:13Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 22
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:30Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 22
+    name: kommander-flux
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058842"
+    uid: c5edfb9a-b80b-4023-9837-6f203b08e288
+  spec:
+    appRef:
+      appID: kommander-flux
+      kind: ClusterApp
+      name: kommander-flux-2.7.2
+    clusterConfigOverrides:
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 2.7.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 22
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:20:40Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 125
+    name: kube-oidc-proxy
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058845"
+    uid: d61035e8-08da-4954-ac6b-5c3e949608bf
+  spec:
+    appRef:
+      appID: kube-oidc-proxy
+      kind: ClusterApp
+      name: kube-oidc-proxy-0.3.7
+    clusterConfigOverrides:
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchLabels:
+          kommander.d2iq.io/cluster-name: jmp-aks-nkp-managed
+      configMapName: kube-oidc-proxy-jmp-aks-nkp-managed
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchLabels:
+          kommander.d2iq.io/cluster-name: nkp-wlc-a
+      configMapName: kube-oidc-proxy-nkp-wlc-a
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchLabels:
+          kommander.d2iq.io/cluster-name: nkp-wlc-b
+      configMapName: kube-oidc-proxy-nkp-wlc-b
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: kube-oidc-proxy-nkp-aws-ec2-a
+    - appVersion: 0.3.7
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - clusterConfigOverridesRef:
+        name: kube-oidc-proxy-jmp-aks-nkp-managed
+      conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:12Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - clusterConfigOverridesRef:
+        name: kube-oidc-proxy-nkp-wlc-a
+      conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:12Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - clusterConfigOverridesRef:
+        name: kube-oidc-proxy-nkp-wlc-b
+      conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:12Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - clusterConfigOverridesRef:
+        name: kube-oidc-proxy-nkp-aws-ec2-a
+      conditions:
+      - lastTransitionTime: "2026-03-31T23:22:02Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:02Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 125
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 23
+    name: kube-prometheus-stack
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058835"
+    uid: 9e521a05-7b74-4a95-8ecd-38ffaf456c98
+  spec:
+    appRef:
+      appID: kube-prometheus-stack
+      kind: ClusterApp
+      name: kube-prometheus-stack-78.4.0
+    clusterConfigOverrides:
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 78.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 23
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 21
+    name: kubernetes-dashboard
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058824"
+    uid: 03019fe8-415b-42f5-abab-ad942357ef51
+  spec:
+    appRef:
+      appID: kubernetes-dashboard
+      kind: ClusterApp
+      name: kubernetes-dashboard-7.14.0
+    clusterConfigOverrides:
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 7.14.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:14Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:14Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:14Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 21
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:28:15Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: logging-operator
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058826"
+    uid: 2444dfc4-3fca-409f-a9c5-a2bd902b06f4
+  spec:
+    appRef:
+      appID: logging-operator
+      kind: ClusterApp
+      name: logging-operator-6.0.3
+    clusterConfigOverrides:
+    - appVersion: 6.0.3
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 6.0.3
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 6.0.3
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 6.0.3
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 6.0.3
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 6.0.3
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:06Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2025-09-20T20:09:05Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 17
+    labels:
+      pulse.nkp.nutanix.com/delete-on-uninstall: "true"
+    name: nkp-pulse-workspace
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909450212"
+    uid: 13ba0154-93fd-497e-97b6-0c3470486fdd
+  spec:
+    appRef:
+      appID: nkp-pulse-workspace
+      kind: ClusterApp
+      name: nkp-pulse-workspace-0.3.0
+    clusterConfigOverrides:
+    - appVersion: 0.3.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.3.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 0.3.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 0.3.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.3.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 0.3.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector: {}
+    configOverrides:
+      name: nkp-pulse-workspace-config-overrides
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-22T00:31:25Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-04-22T00:31:25Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-04-22T00:31:25Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:15Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-04-22T00:31:25Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:07Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 17
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-09T17:58:37Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 6
+    name: nvidia-gpu-operator
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058814"
+    uid: 2c716d0d-380b-4bb3-aa86-7c170d2c787d
+  spec:
+    appRef:
+      appID: nvidia-gpu-operator
+      kind: ClusterApp
+      name: nvidia-gpu-operator-25.10.0
+    clusterConfigOverrides:
+    - appVersion: 25.10.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 25.10.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 25.10.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 25.10.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 25.10.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - nkp-wlc-a
+    configOverrides:
+      name: nvidia-gpu-operator-config-overrides
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-09T17:58:40Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-09T17:58:40Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-04-10T15:23:54Z"
+        message: AppDeployment is disabled on this cluster
+        reason: AppDeploymentDisabled
+        status: "False"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-10T15:22:00Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    observedGeneration: 6
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-01-15T03:33:47Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 14
+    name: opencost
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058838"
+    uid: f9b43136-9c32-431d-bd02-e6dfb4436c29
+  spec:
+    appRef:
+      appID: opencost
+      kind: ClusterApp
+      name: opencost-2.4.0
+    clusterConfigOverrides:
+    - appVersion: 2.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 2.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 2.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 2.4.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-03-31T13:08:00Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-15T03:33:49Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-03-31T13:08:00Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-15T03:33:49Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T13:08:00Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-15T03:33:49Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 14
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: prometheus-adapter
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058830"
+    uid: 97d0db7c-bf4c-4757-8812-5ebaad474432
+  spec:
+    appRef:
+      appID: prometheus-adapter
+      kind: ClusterApp
+      name: prometheus-adapter-5.2.0
+    clusterConfigOverrides:
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 5.2.0
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: prometheus-thanos-traefik
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058839"
+    uid: f5ce0d77-17de-40f9-9659-cbf864ba42aa
+  spec:
+    appRef:
+      appID: prometheus-thanos-traefik
+      kind: ClusterApp
+      name: prometheus-thanos-traefik-0.0.4
+    clusterConfigOverrides:
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 0.0.4
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:07Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:07Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 22
+    name: reloader
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058823"
+    uid: b90419e6-c17c-4856-b878-932ff29e8d09
+  spec:
+    appRef:
+      appID: reloader
+      kind: ClusterApp
+      name: reloader-2.2.5
+    clusterConfigOverrides:
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 2.2.5
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 22
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:27:34Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: rook-ceph
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058827"
+    uid: b79b5bcd-388d-4702-bec6-892f7b78b7b7
+  spec:
+    appRef:
+      appID: rook-ceph
+      kind: ClusterApp
+      name: rook-ceph-1.18.6
+    clusterConfigOverrides:
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:05Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:05Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:28:00Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 20
+    name: rook-ceph-cluster
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058843"
+    uid: 194e55d5-b36b-41fd-a1fb-b54a745ae1b1
+  spec:
+    appRef:
+      appID: rook-ceph-cluster
+      kind: ClusterApp
+      name: rook-ceph-cluster-1.18.6
+    clusterConfigOverrides:
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.18.6
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:11Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:10Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 20
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:05:28Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 22
+    name: traefik
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058807"
+    uid: 09886903-f015-4258-a8bb-c22867a8cb32
+  spec:
+    appRef:
+      appID: traefik
+      kind: ClusterApp
+      name: traefik-37.1.2
+    clusterConfigOverrides:
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 37.1.2
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-ndk-primary
+        - nkp-ndk-target
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:13Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 22
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2024-12-31T20:20:40Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 128
+    name: traefik-forward-auth-kommander
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058813"
+    uid: 5c248f7a-4415-476b-b492-66892a1f3c64
+  spec:
+    appRef:
+      appID: traefik-forward-auth
+      kind: ClusterApp
+      name: traefik-forward-auth-0.3.16
+    clusterConfigOverrides:
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchLabels:
+          kommander.d2iq.io/cluster-name: jmp-aks-nkp-managed
+      configMapName: traefik-forward-auth-kommander-jmp-aks-nkp-managed
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchLabels:
+          kommander.d2iq.io/cluster-name: nkp-wlc-a
+      configMapName: traefik-forward-auth-kommander-nkp-wlc-a
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchLabels:
+          kommander.d2iq.io/cluster-name: nkp-wlc-b
+      configMapName: traefik-forward-auth-kommander-nkp-wlc-b
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-eks-nkp-managed
+      configMapName: ""
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: traefik-forward-auth-kommander-nkp-aws-ec2-a
+    - appVersion: 0.3.16
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - clusterConfigOverridesRef:
+        name: traefik-forward-auth-kommander-jmp-aks-nkp-managed
+      conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - clusterConfigOverridesRef:
+        name: traefik-forward-auth-kommander-nkp-wlc-a
+      conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - clusterConfigOverridesRef:
+        name: traefik-forward-auth-kommander-nkp-wlc-b
+      conditions:
+      - lastTransitionTime: "2026-01-14T23:27:16Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-01-14T23:27:09Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - clusterConfigOverridesRef:
+        name: traefik-forward-auth-kommander-nkp-aws-ec2-a
+      conditions:
+      - lastTransitionTime: "2026-03-31T23:22:05Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:05Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 128
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-02-17T09:43:25Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 14
+    name: velero
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058815"
+    uid: d9c19f7b-5e84-4284-8321-1e66c7ed9613
+  spec:
+    appRef:
+      appID: velero
+      kind: ClusterApp
+      name: velero-11.1.1
+    clusterConfigOverrides:
+    - appVersion: 11.1.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 11.1.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 11.1.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 11.1.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 11.1.1
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - jmp-aks-nkp-managed
+        - nkp-wlc-a
+        - nkp-wlc-b
+        - nkp-aws-ec2-a
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-02-17T09:43:27Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-02-17T09:43:27Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    - conditions:
+      - lastTransitionTime: "2026-03-31T13:07:28Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T13:07:28Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-b
+    - conditions:
+      - lastTransitionTime: "2026-03-31T13:07:42Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T13:07:42Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: jmp-aks-nkp-managed
+    - conditions:
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-03-31T23:22:08Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-aws-ec2-a
+    observedGeneration: 14
+- apiVersion: apps.kommander.d2iq.io/v1alpha3
+  kind: AppDeployment
+  metadata:
+    creationTimestamp: "2026-04-09T19:23:03Z"
+    finalizers:
+    - kommander.mesosphere.io/appdeployment
+    generation: 4
+    name: vgpu-token-operator
+    namespace: nkp-flux-provisioned-phvwv-jjxpb
+    resourceVersion: "1909058817"
+    uid: a322865d-a3de-4e36-af16-cacf07f29bb1
+  spec:
+    appRef:
+      appID: vgpu-token-operator
+      kind: ClusterApp
+      name: vgpu-token-operator-1.0.8
+    clusterConfigOverrides:
+    - appVersion: 1.0.8
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - jmp-aks-nkp-managed
+      configMapName: ""
+    - appVersion: 1.0.8
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-aws-ec2-a
+      configMapName: ""
+    - appVersion: 1.0.8
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-a
+      configMapName: ""
+    - appVersion: 1.0.8
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - nkp-wlc-b
+      configMapName: ""
+    - appVersion: 1.0.8
+      clusterSelector:
+        matchExpressions:
+        - key: kommander.d2iq.io/cluster-name
+          operator: In
+          values:
+          - kind-kind
+      configMapName: ""
+    clusterSelector:
+      matchExpressions:
+      - key: kommander.d2iq.io/cluster-name
+        operator: In
+        values:
+        - nkp-wlc-a
+    configOverrides:
+      name: vgpu-token-operator-config-overrides
+  status:
+    clusters:
+    - conditions:
+      - lastTransitionTime: "2026-04-09T19:23:04Z"
+        message: AppDeployment is enabled on this cluster
+        reason: AppDeploymentEnabled
+        status: "True"
+        type: AppDeploymentEnabled
+      - lastTransitionTime: "2026-04-09T19:23:04Z"
+        message: AppDeploymentInstance is synced
+        reason: Succeeded
+        status: "True"
+        type: AppDeploymentInstanceSynced
+      name: nkp-wlc-a
+    observedGeneration: 4
+kind: List
+metadata:
+  resourceVersion: ""

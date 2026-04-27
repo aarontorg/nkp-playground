@@ -506,6 +506,7 @@ spec:
                       name: traefik
                     spec:
                       appRef:
+                        appID: traefik
                         kind: ClusterApp
                         name: traefik-37.1.2
             patches:
@@ -517,4 +518,49 @@ spec:
                   - string:
                       type: Format
                       fmt: '%s-traefik'
+                    type: string
+          - name: app-certmanager
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: cert-manager
+                      namespace: nkp-flux-provisioned-phvwv-jjxpb
+                    spec:
+                      appRef:
+                        appID: cert-manager
+                        kind: ClusterApp
+                        name: cert-manager-1.18.2
+                      # clusterConfigOverrides:
+                      # - appVersion: 1.18.2
+                      #   clusterSelector:
+                      #     matchExpressions:
+                      #     - key: kommander.d2iq.io/cluster-name
+                      #       operator: In
+                      #       values:
+                      #       - jmp-aks-nkp-managed
+                      #   configMapName: ""
+                      # clusterSelector:
+                      #   matchExpressions:
+                      #   - key: kommander.d2iq.io/cluster-name
+                      #     operator: In
+                      #     values:
+                      #     - jmp-aks-nkp-managed
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-certmanager'
                     type: string
