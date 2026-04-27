@@ -56,6 +56,10 @@ spec:
                     - start
                     - end
                     - vip
+                #apps:
+                  #type: array
+                  #items:
+                    #type: string
               required:
                 - id
                 - pc
