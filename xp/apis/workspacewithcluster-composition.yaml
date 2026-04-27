@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: workspacewithCluster
+  name: workspacewithcluster
 spec:
   # This creates a workspace and cluster in NKP
   compositeTypeRef:
