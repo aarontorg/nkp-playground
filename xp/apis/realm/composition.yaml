@@ -109,7 +109,7 @@ spec:
                           "type": "basic_auth",
                           "data": {
                             "prismCentral": {
-                                "username": admin,
+                                "username": "admin",
                                 "password": "%s"
                               }
                           }
