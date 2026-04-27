@@ -202,7 +202,7 @@ spec:
                 transforms:
                   - string:
                       type: Format
-                      fmt: '%s-pc-credentials-for-konnector'
+                      fmt: '%s-pc-credentials-for-konnector-agent'
                     type: string
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
@@ -211,7 +211,7 @@ spec:
                 transforms:
                   - string:
                       type: Format
-                      fmt: '%s-pc-for-konnector-secret'
+                      fmt: '%s-pc-for-konnector-agent-secret'
                     type: string
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
