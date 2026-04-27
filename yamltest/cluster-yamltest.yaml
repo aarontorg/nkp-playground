@@ -75,8 +75,8 @@ spec:
           serviceLoadBalancer:
             configuration:
               addressRanges:
-              - end: 10.38.213.122 # XP
-                start: 10.38.213.125 # XP
+              - end: 10.38.213.122 # Changed
+                start: 10.38.213.125 # Changed
             provider: MetalLB
         controlPlane:
           autoRenewCertificates:
