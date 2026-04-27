@@ -490,3 +490,31 @@ spec:
                       type: Format
                       fmt: '%s-reloader'
                     type: string
+          - name: app-traefik
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: traefik
+                    spec:
+                      appRef:
+                        kind: ClusterApp
+                        name: traefik-37.1.2
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-traefik'
+                    type: string
