@@ -480,6 +480,10 @@ spec:
                       appRef:
                         kind: ClusterApp
                         name: reloader-2.2.5 #XP
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
@@ -489,6 +493,13 @@ spec:
                   - string:
                       type: Format
                       fmt: '%s-reloader'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
                     type: string
           - name: app-traefik
             base:
@@ -550,21 +561,10 @@ spec:
                         appID: cert-manager
                         kind: ClusterApp
                         name: cert-manager-1.18.2
-                      # clusterConfigOverrides:
-                      # - appVersion: 1.18.2
-                      #   clusterSelector:
-                      #     matchExpressions:
-                      #     - key: kommander.d2iq.io/cluster-name
-                      #       operator: In
-                      #       values:
-                      #       - jmp-aks-nkp-managed
-                      #   configMapName: ""
                       clusterSelector:
                         matchExpressions:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
-                          #values:
-                          #- torg-cluster1
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
