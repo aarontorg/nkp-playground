@@ -582,3 +582,39 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
                     type: string
+          - name: app-fluentbit
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: fluent-bit
+                    spec:
+                      appRef:
+                        appID: fluent-bit
+                        kind: ClusterApp
+                        name: fluent-bit-0.54.0
+              patches:
+                - fromFieldPath: spec.id
+                  toFieldPath: spec.forProvider.manifest.metadata.namespace
+                - fromFieldPath: spec.id
+                  toFieldPath: metadata.name
+                  transforms:
+                    - string:
+                        type: Format
+                        fmt: '%s-fluentbit'
+                      type: string
+                - fromFieldPath: spec.id
+                  toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                  transforms:
+                    - string:
+                        type: Format
+                        fmt: '%s-cluster1'
+                      type: string
