@@ -1,12 +1,12 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: realm
+  name: workspace-with-Cluster
 spec:
   # This creates a workspace and cluster in NKP
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: Realm
+    kind: WorkspaceWithCluster
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
