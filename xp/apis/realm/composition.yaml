@@ -548,12 +548,12 @@ spec:
                       #       values:
                       #       - jmp-aks-nkp-managed
                       #   configMapName: ""
-                      # clusterSelector:
-                      #   matchExpressions:
-                      #   - key: kommander.d2iq.io/cluster-name
-                      #     operator: In
-                      #     values:
-                      #     - jmp-aks-nkp-managed
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+                          values:
+                          - torg-cluster1
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
