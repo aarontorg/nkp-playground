@@ -3,6 +3,7 @@ kind: Composition
 metadata:
   name: realm
 spec:
+  # This creates a workspace and cluster in NKP
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
     kind: Realm
