@@ -601,6 +601,10 @@ spec:
                         appID: fluent-bit
                         kind: ClusterApp
                         name: fluent-bit-0.54.0
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
