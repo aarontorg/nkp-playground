@@ -662,7 +662,7 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
                     type: string
-          - name: app-gatekeeper
+          - name: app-grafana-logging
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
               kind: Object
@@ -702,7 +702,7 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
                     type: string
-          - name: app-gatekeeper
+          - name: app-grafanaLoki
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
               kind: Object
@@ -734,6 +734,86 @@ spec:
                   - string:
                       type: Format
                       fmt: '%s-grafana-loki'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
+          - name: app-rookCeph
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: rook-ceph
+                    spec:
+                      appRef:
+                        appID: rook-ceph
+                        kind: ClusterApp
+                        name: rook-ceph-1.18.6
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-rook-ceph'
+                    type: string
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster1'
+                    type: string
+          - name: app-rookCephCluster
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: rook-ceph-cluster
+                    spec:
+                      appRef:
+                        appID: rook-ceph-cluster
+                        kind: ClusterApp
+                        name: rook-ceph-cluster-1.18.6
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.id
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.id
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-rook-ceph-cluster'
                     type: string
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
