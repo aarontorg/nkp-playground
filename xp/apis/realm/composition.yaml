@@ -195,7 +195,7 @@ spec:
                         konvoy.d2iq.io/provider: nutanix
                     type: Opaque
                     data:
-                      username: YWRtaW4= # Maybe put in API
+                      username: admin # Maybe put in API
             patches:
               - fromFieldPath: spec.id
                 toFieldPath: spec.forProvider.manifest.metadata.name
@@ -221,7 +221,7 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
               - fromFieldPath: spec.pc.key
-                toFieldPath: spec.forProvider.manifest.data.credentials
+                toFieldPath: spec.forProvider.manifest.data.password
                 policy:
                   fromFieldPath: Required
           # - name: nkpCluster
