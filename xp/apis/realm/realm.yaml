@@ -9,7 +9,7 @@ spec:
   id: torg
   nkpVersion: v2.17.1
   pc:
-    key: bngyVGVjaDI5NCEK # base64
+    key: 'nx2Tech294!'
     ipAddress: 10.8.50.7
     clusterName: RNO-SPOC007-3
     subnetName: primary-RNO-SPOC007-3
