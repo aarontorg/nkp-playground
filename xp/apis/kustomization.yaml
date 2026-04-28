@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - workspacewithcluster-composition.yaml
   - realm-definition.yaml
+  - singlecluster-composition.yaml
