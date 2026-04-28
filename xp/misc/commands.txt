@@ -1,1 +1,7 @@
 kubectl create clusterrolebinding crossplane-admin-binding2  --clusterrole=cluster-admin   --serviceaccount=crossplane-system:crossplane-contrib-provider-kubernetes-f6665ef36536
+
+#Cleanup after delete ... can fix this in the API later
+kubectl get workspaceroles -n torg-cluster2 -o name | xargs -I {} kubectl -n torg-cluster2 patch {} --type merge -p '{"metadata":{"finalizers":[]}}'
+kubectl get federatedsecrets -n torg-cluster2 -o name | xargs -I {} kubectl -n torg-cluster2 patch {} --type merge -p '{"metadata":{"finalizers":[]}}'
+kubectl get federatedconfigmaps -n torg-cluster2 -o name | xargs -I {} kubectl -n torg-cluster2 patch {} --type merge -p '{"metadata":{"finalizers":[]}}'
+kubectl get federatednamespaces -n torg-cluster2 -o name | xargs -I {} kubectl -n torg-cluster2 patch {} --type merge -p '{"metadata":{"finalizers":[]}}'
