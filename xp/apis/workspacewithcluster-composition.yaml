@@ -37,7 +37,7 @@ spec:
                       namespaceName: ""
                       version: "" #v2.17.1
             patches:
-              - fromFieldPath: spec.workloadClusterName
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.name
               - fromFieldPath: spec.workSpaceName
                 toFieldPath: metadata.name
