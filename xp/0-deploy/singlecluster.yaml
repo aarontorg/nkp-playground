@@ -1,12 +1,12 @@
 apiVersion: nkp.io/v1alpha1
-kind: WorkspaceWithCluster
+kind: Realm
 metadata:
-  name: singlecluster1
+  name: realm2-single
 spec:
   crossplane:
     compositionRef:
       name: singlecluster
-  id: torg-cluster2
+  workloadClusterName: workload-2
   workSpace: torg
   nkpVersion: v2.17.1
   pc:
