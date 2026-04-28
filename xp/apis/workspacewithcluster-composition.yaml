@@ -6,7 +6,7 @@ spec:
   # This creates a workspace and cluster in NKP
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: WorkspaceWithCluster
+    kind: Realm
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
@@ -37,22 +37,22 @@ spec:
                       namespaceName: ""
                       version: "" #v2.17.1
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: metadata.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-workspace'
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.annotations["kommander.mesosphere.io/display-name"]
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.labels["workspaces.kommander.mesosphere.io/workspace-name"]
               - fromFieldPath: spec.nkpVersion
                 toFieldPath: spec.forProvider.manifest.spec.version
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.spec.namespaceName
           - name: pcCreds
             base:
@@ -72,29 +72,24 @@ spec:
                         konvoy.d2iq.io/provider: nutanix
                     type: Opaque
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-pc-credentials'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-pc-secret'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
-                transforms:
-                  - type: string
-                    string:
-                      type: Format
-                      fmt: '%s-cluster1'
               - type: CombineFromComposite
                 toFieldPath: spec.forProvider.manifest.data.credentials
                 policy:
@@ -139,29 +134,25 @@ spec:
                         konvoy.d2iq.io/provider: nutanix
                     type: Opaque
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-pc-credentials-for-csi'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-pc-for-csi-secret'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
                 transforms:
-                  - type: string
-                    string:
-                      type: Format
-                      fmt: '%s-cluster1'
               - type: CombineFromComposite
                 toFieldPath: spec.forProvider.manifest.data.credentials
                 policy:
@@ -198,29 +189,24 @@ spec:
                     data:
                       username: 'YWRtaW4=' # Maybe put in API
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-pc-credentials-for-konnector-agent'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-pc-for-konnector-agent-secret'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
-                transforms:
-                  - type: string
-                    string:
-                      type: Format
-                      fmt: '%s-cluster1'
               - fromFieldPath: spec.pc.key
                 toFieldPath: spec.forProvider.manifest.data.credentials
                 policy:
@@ -385,44 +371,35 @@ spec:
                                       vcpuSockets: 8
                                       vcpusPerSocket: 1
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-cluster'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
                 transforms:
-                  - type: string
-                    string:
-                      type: Format
-                      fmt: '%s-cluster1'
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.ccm.credentials.secretRef.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-pc-credentials'
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.csi.providers.nutanix.credentials.secretRef.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-pc-credentials-for-csi'
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.konnectorAgent.credentials.secretRef.name
                 transforms:
                   - type: string
@@ -441,7 +418,7 @@ spec:
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.subnets[0].name
               - fromFieldPath: spec.loadBalancer.vip
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.controlPlaneEndpoint.host
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.credentials.secretRef.name
                 transforms:
                   - type: string
@@ -486,22 +463,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-reloader'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-traefik
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -526,22 +498,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-traefik'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-certmanager
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -567,22 +534,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-certmanager'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-fluentbit
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -607,22 +569,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-fluentbit'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-gatekeeper
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -647,22 +604,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-gatekeeper'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-grafana-logging
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -687,22 +639,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-grafana-logging'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-grafanaLoki
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -727,22 +674,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-grafana-loki'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-rookCeph
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -767,22 +709,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-rook-ceph'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-rookCephCluster
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -807,22 +744,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-rook-ceph-cluster'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-rookCephCluster
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -847,22 +779,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-logging-operator'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-prometheusAdapter
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -887,22 +814,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-prom-adapter'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-prometheusThanosTraefik
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -926,22 +848,17 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-prom-thanos-traefik'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string
           - name: app-kubePrometheusStack
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -966,19 +883,14 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
                   - string:
                       type: Format
                       fmt: '%s-kube-prom-stack'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-cluster1'
-                    type: string

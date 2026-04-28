@@ -1,5 +1,5 @@
 apiVersion: nkp.io/v1alpha1
-kind: WorkspaceWithCluster
+kind: Realm
 metadata:
   name: workspacewithcluster1
 spec:

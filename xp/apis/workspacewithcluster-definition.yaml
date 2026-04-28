@@ -1,13 +1,13 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: workspacewithclusters.nkp.io
+  name: realms.nkp.io
 spec:
   scope: Cluster
   group: nkp.io
   names:
-    kind: WorkspaceWithCluster #Rename this after current res
-    plural: workspacewithclusters # Rename
+    kind: Realm #Rename this after current res
+    plural: realms # Rename
   versions:
     - name: v1alpha1
       served: true
@@ -19,9 +19,9 @@ spec:
             spec:
               type: object
               properties:
-                id:
+                workloadClusterName:
                   type: string
-                workSpace:
+                workSpaceName:
                   type: string
                 nkpVersion:
                   type: string
