@@ -2,6 +2,8 @@ apiVersion: nkp.io/v1alpha1
 kind: Realm
 metadata:
   name: realm1
+  labels:
+    refresh: "1"
 spec:
   crossplane:
     compositionRef:
