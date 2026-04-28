@@ -839,14 +839,14 @@ spec:
                     kind: AppDeployment
                     metadata:
                       name: prometheus-thanos-traefik
-                      appRef:
-                        appID: prometheus-thanos-traefik
-                        kind: ClusterApp
-                        name: prometheus-thanos-traefik-0.0.4
-                      clusterSelector:
-                        matchExpressions:
-                        - key: kommander.d2iq.io/cluster-name
-                          operator: In
+                    appRef:
+                      appID: prometheus-thanos-traefik
+                      kind: ClusterApp
+                      name: prometheus-thanos-traefik-0.0.4
+                    clusterSelector:
+                      matchExpressions:
+                      - key: kommander.d2iq.io/cluster-name
+                        operator: In
             patches:
               - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
