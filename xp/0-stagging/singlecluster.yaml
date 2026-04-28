@@ -5,7 +5,7 @@ metadata:
 spec:
   crossplane:
     compositionRef:
-      name: workspacewithcluster
+      name: singlecluster
   id: torg-cluster2
   workSpace: torg
   nkpVersion: v2.17.1
