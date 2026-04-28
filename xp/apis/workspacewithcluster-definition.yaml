@@ -6,8 +6,8 @@ spec:
   scope: Cluster
   group: nkp.io
   names:
-    kind: WorkspaceWithCluster
-    plural: workspacewithclusters
+    kind: WorkspaceWithCluster #Rename this after current res
+    plural: workspacewithclusters # Rename
   versions:
     - name: v1alpha1
       served: true
@@ -20,6 +20,8 @@ spec:
               type: object
               properties:
                 id:
+                  type: string
+                workSpace:
                   type: string
                 nkpVersion:
                   type: string
