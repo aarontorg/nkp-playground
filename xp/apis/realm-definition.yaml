@@ -63,7 +63,8 @@ spec:
                   #items:
                     #type: string
               required:
-                - id
+                - workloadClusterName
+                - workSpaceName
                 - pc
                 - k8sImageName
                 - k8sVersion
