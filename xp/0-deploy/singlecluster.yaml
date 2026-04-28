@@ -7,7 +7,7 @@ spec:
     compositionRef:
       name: singlecluster
   workloadClusterName: workload-2
-  workSpace: torg
+  workSpaceName torg
   nkpVersion: v2.17.1
   pc:
     key: 'nx2Tech294!'
