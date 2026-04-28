@@ -41,7 +41,7 @@ spec:
                       type: Format
                       fmt: '%s-pc-credentials'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -108,7 +108,7 @@ spec:
                       type: Format
                       fmt: '%s-pc-credentials-for-csi'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -167,7 +167,7 @@ spec:
                       type: Format
                       fmt: '%s-pc-credentials-for-konnector-agent'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -354,7 +354,7 @@ spec:
                       type: Format
                       fmt: '%s-cluster1'
                     type: string
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -448,7 +448,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -488,7 +488,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -529,7 +529,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -569,7 +569,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -609,7 +609,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -649,7 +649,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -689,7 +689,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -729,7 +729,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -769,7 +769,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -809,7 +809,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -849,7 +849,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -888,7 +888,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
@@ -928,7 +928,7 @@ spec:
                         - key: kommander.d2iq.io/cluster-name
                           operator: In
             patches:
-              - fromFieldPath: spec.id
+              - fromFieldPath: spec.workSpace
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
               - fromFieldPath: spec.id
                 toFieldPath: metadata.name
