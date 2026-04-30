@@ -1,13 +1,13 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: realms.nkp.io
+  name: clusterprofiles.nkp.io
 spec:
   scope: Cluster
   group: nkp.io
   names:
-    kind: Realm #Rename this after current res
-    plural: realms # Rename
+    kind: ClusterProfile #Rename this after current res
+    plural: clusterprofiles # Rename
   versions:
     - name: v1alpha1
       served: true
@@ -58,19 +58,15 @@ spec:
                     - start
                     - end
                     - vip
-                #apps:
-                  #type: array
-                  #items:
-                    #type: string
               required:
                 - workloadClusterName
                 - workSpaceName
-                - pc
-                - k8sImageName
                 - k8sVersion
+                - k8sImageName
+                - pc
                 - loadBalancer
             status:
               properties:
-                workspaceNamespace:
+                misc:
                   type: string
               type: object

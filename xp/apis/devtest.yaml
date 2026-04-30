@@ -1,0 +1,856 @@
+# Test profile has less apps
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: devtest
+spec:
+  compositeTypeRef:
+    apiVersion: nkp.io/v1alpha1
+    kind: Profile
+  mode: Pipeline
+  pipeline:
+    - step: patch-and-transform
+      functionRef:
+        name: function-patch-and-transform
+      input:
+        apiVersion: pt.fn.crossplane.io/v1beta1
+        kind: Resources
+        resources:
+          - name: pcCreds
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: v1
+                    kind: Secret
+                    metadata:
+                      labels:
+                        cluster.x-k8s.io/provider: nutanix
+                        konvoy.d2iq.io/provider: nutanix
+                    type: Opaque
+            patches:
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-credentials'
+                    type: string
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-secret'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
+              - type: CombineFromComposite
+                toFieldPath: spec.forProvider.manifest.data.credentials
+                policy:
+                  fromFieldPath: Required
+                combine:
+                  variables:
+                    - fromFieldPath: spec.pc.key
+                  strategy: string
+                  string:
+                    fmt: |
+                      [
+                        {
+                          "type": "basic_auth",
+                          "data": {
+                            "prismCentral": {
+                                "username": "admin",
+                                "password": "%s"
+                              }
+                          }
+                        }
+                      ]
+                transforms:
+                  - type: string
+                    string:
+                      type: Convert
+                      convert: ToBase64
+          - name: pcCredsForCSI
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: v1
+                    kind: Secret
+                    metadata:
+                      labels:
+                        cluster.x-k8s.io/provider: nutanix
+                        konvoy.d2iq.io/provider: nutanix
+                    type: Opaque
+            patches:
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-credentials-for-csi'
+                    type: string
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-for-csi-secret'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
+                transforms:
+              - type: CombineFromComposite
+                toFieldPath: spec.forProvider.manifest.data.credentials
+                policy:
+                  fromFieldPath: Required
+                combine:
+                  variables:
+                    - fromFieldPath: spec.pc.ipAddress
+                    - fromFieldPath: spec.pc.key
+                  strategy: string
+                  string:
+                    fmt: "%s:9440:admin:%s"
+                transforms:
+                  - type: string
+                    string:
+                      type: Convert
+                      convert: ToBase64
+          - name: pcCredsForKonnector
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: v1
+                    kind: Secret
+                    metadata:
+                      labels:
+                        cluster.x-k8s.io/provider: nutanix
+                        konvoy.d2iq.io/provider: nutanix
+                    type: Opaque
+                    data:
+                      username: 'YWRtaW4=' # Maybe put in API
+            patches:
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-credentials-for-konnector-agent'
+                    type: string
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-pc-for-konnector-agent-secret'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
+              - fromFieldPath: spec.pc.key
+                toFieldPath: spec.forProvider.manifest.data.credentials
+                policy:
+                  fromFieldPath: Required
+                transforms:
+                  - type: string
+                    string:
+                      type: Convert
+                      convert: ToBase64
+          - name: nkpCluster
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: cluster.x-k8s.io/v1beta1
+                    kind: Cluster
+                    metadata:
+                      labels:
+                        cluster.x-k8s.io/provider: nutanix
+                        konvoy.d2iq.io/provider: nutanix
+                    spec:
+                      clusterNetwork:
+                        pods:
+                          cidrBlocks:
+                          - 192.168.0.0/16
+                        services:
+                          cidrBlocks:
+                          - 10.96.0.0/12
+                      controlPlaneEndpoint:
+                        host: ""
+                        port: 0
+                      topology:
+                        class: nkp-nutanix-v2.17.1 # Possible XP
+                        controlPlane:
+                          metadata: {}
+                          replicas: 3
+                        variables:
+                        - name: clusterConfig
+                          value:
+                            addons:
+                              ccm:
+                                strategy: HelmAddon
+                              clusterAutoscaler:
+                                strategy: HelmAddon
+                              cni:
+                                provider: Cilium
+                                strategy: HelmAddon
+                              cosi:
+                                strategy: HelmAddon
+                              csi:
+                                defaultStorage:
+                                  provider: nutanix
+                                  storageClassConfig: volume
+                                providers:
+                                  nutanix:
+                                    credentials:
+                                      secretRef:
+                                        name: patch #XP
+                                    storageClassConfigs:
+                                      volume:
+                                        allowExpansion: true
+                                        parameters:
+                                          csi.storage.k8s.io/fstype: ext4
+                                          description: CSI StorageClass nutanix-volume for yamltest
+                                          flashMode: DISABLED
+                                          hypervisorAttached: ENABLED
+                                          storageContainer: SelfServiceContainer
+                                          storageType: NutanixVolumes
+                                        reclaimPolicy: Delete
+                                        volumeBindingMode: WaitForFirstConsumer
+                                    strategy: HelmAddon
+                                snapshotController:
+                                  strategy: HelmAddon
+                              konnectorAgent:
+                                credentials:
+                                  secretRef:
+                                    name: patch # XP
+                              nfd:
+                                strategy: HelmAddon
+                              registry:
+                                provider: CNCF Distribution
+                              serviceLoadBalancer:
+                                configuration:
+                                  addressRanges:
+                                  - end: patch # XP
+                                    start: patch # XP
+                                provider: MetalLB
+                            controlPlane:
+                              autoRenewCertificates:
+                                daysBeforeExpiry: 180
+                              nodeRegistration:
+                                ignorePreflightErrors:
+                                - SystemVerification
+                              nutanix:
+                                machineDetails:
+                                  bootType: uefi
+                                  cluster:
+                                    name: patch #XP
+                                    type: name
+                                  image:
+                                    name: patch #XP
+                                    type: name
+                                  memorySize: 16Gi
+                                  subnets:
+                                  - name: patch #XP
+                                    type: name
+                                  systemDiskSize: 80Gi
+                                  vcpuSockets: 4
+                                  vcpusPerSocket: 1
+                            dns:
+                              coreDNS: {}
+                            encryptionAtRest:
+                              providers:
+                              - secretbox: {}
+                            kubeProxy:
+                              mode: disabled
+                            nutanix:
+                              controlPlaneEndpoint:
+                                port: 6443
+                                virtualIP:
+                                  provider: KubeVIP
+                              prismCentralEndpoint:
+                                credentials:
+                                  secretRef:
+                                    name: patch #XP
+                                insecure: true
+                        version: patch #XP
+                        workers:
+                          machineDeployments:
+                          - class: default-worker
+                            metadata:
+                              annotations:
+                                cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "2"
+                                cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "2"
+                            name: md-0
+                            variables:
+                              overrides:
+                              - name: workerConfig
+                                value:
+                                  nodeRegistration:
+                                    ignorePreflightErrors:
+                                    - SystemVerification
+                                  nutanix:
+                                    machineDetails:
+                                      bootType: uefi
+                                      cluster:
+                                        type: name
+                                      image:
+                                        type: name
+                                      memorySize: 32Gi
+                                      subnets:
+                                      - type: name
+                                      systemDiskSize: 80Gi
+                                      vcpuSockets: 8
+                                      vcpusPerSocket: 1
+            patches:
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.name
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-cluster'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.metadata.labels["konvoy.d2iq.io/cluster-name"]
+                transforms:
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.ccm.credentials.secretRef.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: '%s-pc-credentials'
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.csi.providers.nutanix.credentials.secretRef.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: '%s-pc-credentials-for-csi'
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.konnectorAgent.credentials.secretRef.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: '%s-pc-credentials-for-konnector-agent'
+              - fromFieldPath: spec.loadBalancer.end
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].end
+              - fromFieldPath: spec.loadBalancer.start
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].start
+              - fromFieldPath: spec.pc.clusterName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.name
+              - fromFieldPath: spec.k8sImageName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.image.name
+              - fromFieldPath: spec.pc.subnetName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.subnets[0].name
+              - fromFieldPath: spec.loadBalancer.vip
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.controlPlaneEndpoint.host
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.credentials.secretRef.name
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: '%s-pc-credentials'
+              - fromFieldPath: spec.pc.ipAddress
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.url
+                transforms:
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: "https://%s:9440"
+              - fromFieldPath: spec.k8sVersion
+                toFieldPath: spec.forProvider.manifest.spec.topology.version
+              - fromFieldPath: spec.pc.clusterName
+                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.cluster.name
+              - fromFieldPath: spec.pc.subnetName
+                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.subnets[0].name
+              - fromFieldPath: spec.k8sImageName
+                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image.name
+          - name: app-reloader
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: reloader
+                    spec:
+                      appRef:
+                        kind: ClusterApp
+                        name: reloader-2.2.5 #XP
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-reloader'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          - name: app-traefik
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: traefik
+                    spec:
+                      appRef:
+                        appID: traefik
+                        kind: ClusterApp
+                        name: traefik-37.1.2
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-traefik'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          - name: app-certmanager
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: cert-manager
+                      namespace: nkp-flux-provisioned-phvwv-jjxpb
+                    spec:
+                      appRef:
+                        appID: cert-manager
+                        kind: ClusterApp
+                        name: cert-manager-1.18.2
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-certmanager'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-fluentbit
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: fluent-bit
+          #           spec:
+          #             appRef:
+          #               appID: fluent-bit
+          #               kind: ClusterApp
+          #               name: fluent-bit-0.54.0
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-fluentbit'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-gatekeeper
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: gatekeeper
+          #           spec:
+          #             appRef:
+          #               appID: gatekeeper
+          #               kind: ClusterApp
+          #               name: gatekeeper-3.20.1
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-gatekeeper'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-grafana-logging
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: grafana-logging
+          #           spec:
+          #             appRef:
+          #               appID: grafana-logging
+          #               kind: ClusterApp
+          #               name: grafana-logging-10.1.2
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-grafana-logging'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-grafanaLoki
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: grafana-loki
+          #           spec:
+          #             appRef:
+          #               appID: grafana-loki
+          #               kind: ClusterApp
+          #               name: grafana-loki-0.80.5
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-grafana-loki'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-rookCeph
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: rook-ceph
+          #           spec:
+          #             appRef:
+          #               appID: rook-ceph
+          #               kind: ClusterApp
+          #               name: rook-ceph-1.18.6
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-rook-ceph'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-rookCephCluster
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: rook-ceph-cluster
+          #           spec:
+          #             appRef:
+          #               appID: rook-ceph-cluster
+          #               kind: ClusterApp
+          #               name: rook-ceph-cluster-1.18.6
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-rook-ceph-cluster'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          # - name: app-rookCephCluster
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: logging-operator
+          #           spec:
+          #             appRef:
+          #               appID: logging-operator
+          #               kind: ClusterApp
+          #               name: logging-operator-6.0.3
+          #             clusterSelector:
+          #               matchExpressions:
+          #               - key: kommander.d2iq.io/cluster-name
+          #                 operator: In
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-logging-operator'
+          #           type: string
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          - name: app-prometheusAdapter
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: prometheus-adapter
+                    spec:
+                      appRef:
+                        appID: prometheus-adapter
+                        kind: ClusterApp
+                        name: prometheus-adapter-5.2.0
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-prom-adapter'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          - name: app-prometheusThanosTraefik
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: prometheus-thanos-traefik
+                    spec:
+                      appRef:
+                        appID: prometheus-thanos-traefik
+                        kind: ClusterApp
+                        name: prometheus-thanos-traefik-0.0.4
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-prom-thanos-traefik'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          - name: app-kubePrometheusStack
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: kube-prometheus-stack
+                    spec:
+                      appRef:
+                        appID: kube-prometheus-stack
+                        kind: ClusterApp
+                        name: kube-prometheus-stack-78.4.0
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-kube-prom-stack'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]

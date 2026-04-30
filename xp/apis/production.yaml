@@ -1,12 +1,12 @@
+# Test profile has less apps
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: singlecluster
+  name: production
 spec:
-  # This creates a workspace and cluster in NKP
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: Realm
+    kind: Profile
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
@@ -320,15 +320,12 @@ spec:
                                     machineDetails:
                                       bootType: uefi
                                       cluster:
-                                        name: patch #XP
                                         type: name
                                       image:
-                                        name: patch #XP
                                         type: name
                                       memorySize: 32Gi
                                       subnets:
-                                      - name: patch #XP
-                                        type: name
+                                      - type: name
                                       systemDiskSize: 80Gi
                                       vcpuSockets: 8
                                       vcpusPerSocket: 1

@@ -1,13 +1,13 @@
 apiVersion: nkp.io/v1alpha1
-kind: Realm
+kind: ClusterProfile
 metadata:
-  name: realm2-single
+  name: devtest1
 spec:
   crossplane:
     compositionRef:
-      name: singlecluster
-  workloadClusterName: workload-2
-  workSpaceName: torg
+      name: devtest
+  workloadClusterName: devtest-1
+  workSpaceName: devtest
   nkpVersion: v2.17.1
   pc:
     key: 'nx2Tech294!'
