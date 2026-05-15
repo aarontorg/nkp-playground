@@ -11,12 +11,12 @@ spec:
   nkpVersion: v2.17.1
   pc:
     key: 'nx2Tech294!'
-    ipAddress: 10.8.50.7
+    ipAddress: 10.48.55.7
     clusterName: RNO-SPOC007-3
     subnetName: primary-RNO-SPOC007-3
   loadBalancer:
-    start: 10.8.50.117
-    end: 10.8.50.119
-    vip: 10.8.50.116
+    start: 10.8.50.114
+    end: 10.8.50.109
+    vip: 10.48.55.108
   k8sImageName: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017
   k8sVersion: v1.34.3

@@ -1,4 +1,6 @@
 kubectl create clusterrolebinding crossplane-admin-binding2  --clusterrole=cluster-admin   --serviceaccount=crossplane-system:crossplane-contrib-provider-kubernetes-f6665ef36536
+kubectl create clusterrolebinding crossplane-admin-binding1  --clusterrole=cluster-admin   --serviceaccount=xp-apis:xp-apis
+kubectl create secret generic aarontorg --from-literal=username=aarontorg --from-literal=password=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 -n xp-apis
 
 #Cleanup after delete ... can fix this in the API later
 kubectl get workspaceroles -n torg-cluster2 -o name | xargs -I {} kubectl -n torg-cluster2 patch {} --type merge -p '{"metadata":{"finalizers":[]}}'
