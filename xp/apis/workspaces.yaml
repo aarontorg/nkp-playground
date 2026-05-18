@@ -10,7 +10,7 @@ metadata:
     workspaces.kommander.mesosphere.io/workspace-name: production
   name: production
 spec:
-  namespaceName: messaging
+  namespaceName: production
   version: v2.17.1
 ---
 apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
