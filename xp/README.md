@@ -1,4 +1,6 @@
-# Crossplane demo with NKP to manage clusters via gitops and custom api
+# NKP and Crossplane
+
+
 
 ## What does it do?
 
@@ -73,9 +75,17 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 We can now create clusters with ClusterProfile api and two compositions we created. To do this, we'll utilize another gitops repo within the xp-apis project on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
 
 - Go to the management cluster workspace and go in to the xp-apis project
+- Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.
 - Create a new GitOps source
     **Name:** workload-clusters
     **Repository URL:** https://github.com/aarontorg/nkp-playground.git
     **Branch:** main
     **Path:** ./xp/0-deploy
     **Primary Git Secret:** *Select one created for access*
+- After a few minutes a new cluster should be created
+
+#### Details on Setup
+
+Within the repo there are two folders 0-deploy and 0-stagging. As mentioned, anything in the 0-deploy folder will be deployed. There are three examples included. The devtest clusters utilize the devtest composition and the production example uses production. They are essentially the same except for the amount of nodes and the applications installed. Devtest has less apps and fewer workers.
+
+The idea is that we can create profiles for the types of clusters that we want. We can hard code any value and/or expose it to the user for customizations. One idea is to be able to update/upgrade things much easier.
