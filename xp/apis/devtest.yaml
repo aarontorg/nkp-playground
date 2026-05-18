@@ -504,41 +504,41 @@ spec:
                     type: string
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
-          # - name: app-fluentbit
-          #   base:
-          #     apiVersion: kubernetes.crossplane.io/v1alpha2
-          #     kind: Object
-          #     spec:
-          #       providerConfigRef:
-          #         name: kubernetes-provider
-          #       deletionPolicy: Delete
-          #       forProvider:
-          #         manifest:
-          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
-          #           kind: AppDeployment
-          #           metadata:
-          #             name: fluent-bit
-          #           spec:
-          #             appRef:
-          #               appID: fluent-bit
-          #               kind: ClusterApp
-          #               name: fluent-bit-0.54.0
-          #             clusterSelector:
-          #               matchExpressions:
-          #               - key: kommander.d2iq.io/cluster-name
-          #                 operator: In
-          #   patches:
-          #     - fromFieldPath: spec.workSpaceName
-          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
-          #     - fromFieldPath: spec.workloadClusterName
-          #       toFieldPath: metadata.name
-          #       transforms:
-          #         - string:
-          #             type: Format
-          #             fmt: '%s-fluentbit'
-          #           type: string
-          #     - fromFieldPath: spec.workloadClusterName
-          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
+          - name: app-fluentbit
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: fluent-bit
+                    spec:
+                      appRef:
+                        appID: fluent-bit
+                        kind: ClusterApp
+                        name: fluent-bit-0.54.0
+                      clusterSelector:
+                        matchExpressions:
+                        - key: kommander.d2iq.io/cluster-name
+                          operator: In
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-fluentbit'
+                    type: string
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchExpressions[0].values[0]
           # - name: app-gatekeeper
           #   base:
           #     apiVersion: kubernetes.crossplane.io/v1alpha2
