@@ -13,7 +13,7 @@ spec:
     key: 'nx2Tech989!' # MODIFY_THIS
     ipAddress: 10.8.26.7 # MODIFY_THIS
     clusterName: RNO-SPOC001-3 # MODIFY_THIS
-    subnetName: RNO-SPOC001-3 # MODIFY_THIS
+    subnetName: primary-RNO-SPOC001-3 # MODIFY_THIS
   loadBalancer:
     start: 10.8.26.102 # MODIFY_THIS
     end: 10.8.26.107 # MODIFY_THIS
