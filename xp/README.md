@@ -76,6 +76,7 @@ We can now create clusters with ClusterProfile api and two compositions we creat
 
 - Go to the management cluster workspace and go in to the xp-apis project
 - Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.
+- For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search of MODIFY_THIS
 - Create a new GitOps source
     **Name:** workload-clusters
     **Repository URL:** https://github.com/aarontorg/nkp-playground.git
