@@ -12,7 +12,8 @@ NKP comes out of the box with supported open source apps that are delivered on i
 
 - Install NKP
 - Have about X amount of IP address available for use on the 3 clusters that will be created
-- Clone this git repo `git clone https://github.com/aarontorg/nkp-playground.git` **Request permission if needed**
+- Clone this git repo: 
+    `git clone https://github.com/aarontorg/nkp-playground.git` **Request permission if needed**
 
 ## Management Cluster
 
@@ -53,10 +54,10 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 To create two workspaces and install the custom crossplane apis (XRDs & compositions) we'll utilize NKPs project functionality on the Managment Cluster Workspace. All steps below are done in the NKP UI and or kubectl on the management cluster.
 
-- Go to the management cluster workspace
+- In the NKP UI, go to the management cluster workspace
 - Create a new project named **xp-apis** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
-- Give admin permission to xp-apis service account (hack)
+- Give admin permission to xp-apis service account (hack). 
     `kubectl create clusterrolebinding xp-apis-admin --clusterrole=cluster-admin --serviceaccount=xp-apis:xp-apis`
 - Go to the project in NKP UI
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
