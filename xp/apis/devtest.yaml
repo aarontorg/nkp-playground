@@ -419,9 +419,6 @@ spec:
                       appRef:
                         kind: ClusterApp
                         name: reloader-2.2.5 #XP
-                      #clusterSelector:
-                      #  matchLabels:
-                      #    composition: devtest
             patches:
               - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
@@ -714,96 +711,96 @@ spec:
           #           type: string
           #     - fromFieldPath: spec.crossplane.compositionRef.name
           #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-prometheusAdapter
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: prometheus-adapter
-                    spec:
-                      appRef:
-                        appID: prometheus-adapter
-                        kind: ClusterApp
-                        name: prometheus-adapter-5.2.0
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-prom-adapter'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-prometheusThanosTraefik
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: prometheus-thanos-traefik
-                    spec:
-                      appRef:
-                        appID: prometheus-thanos-traefik
-                        kind: ClusterApp
-                        name: prometheus-thanos-traefik-0.0.4
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-prom-thanos-traefik'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-kubePrometheusStack
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: kube-prometheus-stack
-                    spec:
-                      appRef:
-                        appID: kube-prometheus-stack
-                        kind: ClusterApp
-                        name: kube-prometheus-stack-78.4.0
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-kube-prom-stack'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+        # - name: app-prometheusAdapter
+        #   base:
+        #     apiVersion: kubernetes.crossplane.io/v1alpha2
+        #     kind: Object
+        #     spec:
+        #       providerConfigRef:
+        #         name: kubernetes-provider
+        #       deletionPolicy: Delete
+        #       forProvider:
+        #         manifest:
+        #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+        #           kind: AppDeployment
+        #           metadata:
+        #             name: prometheus-adapter
+        #           spec:
+        #             appRef:
+        #               appID: prometheus-adapter
+        #               kind: ClusterApp
+        #               name: prometheus-adapter-5.2.0
+        #   patches:
+        #     - fromFieldPath: spec.workSpaceName
+        #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+        #     - fromFieldPath: spec.workloadClusterName
+        #       toFieldPath: metadata.name
+        #       transforms:
+        #         - string:
+        #             type: Format
+        #             fmt: '%s-prom-adapter'
+        #           type: string
+        #     - fromFieldPath: spec.crossplane.compositionRef.name
+        #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+        # - name: app-prometheusThanosTraefik
+        #   base:
+        #     apiVersion: kubernetes.crossplane.io/v1alpha2
+        #     kind: Object
+        #     spec:
+        #       providerConfigRef:
+        #         name: kubernetes-provider
+        #       deletionPolicy: Delete
+        #       forProvider:
+        #         manifest:
+        #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+        #           kind: AppDeployment
+        #           metadata:
+        #             name: prometheus-thanos-traefik
+        #           spec:
+        #             appRef:
+        #               appID: prometheus-thanos-traefik
+        #               kind: ClusterApp
+        #               name: prometheus-thanos-traefik-0.0.4
+        #   patches:
+        #     - fromFieldPath: spec.workSpaceName
+        #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+        #     - fromFieldPath: spec.workloadClusterName
+        #       toFieldPath: metadata.name
+        #       transforms:
+        #         - string:
+        #             type: Format
+        #             fmt: '%s-prom-thanos-traefik'
+        #           type: string
+        #     - fromFieldPath: spec.crossplane.compositionRef.name
+        #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+        # - name: app-kubePrometheusStack
+        #   base:
+        #     apiVersion: kubernetes.crossplane.io/v1alpha2
+        #     kind: Object
+        #     spec:
+        #       providerConfigRef:
+        #         name: kubernetes-provider
+        #       deletionPolicy: Delete
+        #       forProvider:
+        #         manifest:
+        #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+        #           kind: AppDeployment
+        #           metadata:
+        #             name: kube-prometheus-stack
+        #           spec:
+        #             appRef:
+        #               appID: kube-prometheus-stack
+        #               kind: ClusterApp
+        #               name: kube-prometheus-stack-78.4.0
+        #   patches:
+        #     - fromFieldPath: spec.workSpaceName
+        #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+        #     - fromFieldPath: spec.workloadClusterName
+        #       toFieldPath: metadata.name
+        #       transforms:
+        #         - string:
+        #             type: Format
+        #             fmt: '%s-kube-prom-stack'
+        #           type: string
+        #     - fromFieldPath: spec.crossplane.compositionRef.name
+        #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition

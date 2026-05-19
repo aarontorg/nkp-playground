@@ -87,7 +87,8 @@ In the nkp-playground repo
     **Branch:** main
     **Path:** ./xp/0-deploy
     **Primary Git Secret:** *Select one created for access*
-- After a few minutes a new cluster should be created
+- After 1-2 minutes a new cluster should start being created
+    - `kubectl get clusters -A`
 
 #### Details on Setup
 
