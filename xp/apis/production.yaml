@@ -830,7 +830,37 @@ spec:
                 transforms:
                   - string:
                       type: Format
-                      fmt: '%s-certmanager'
+                      fmt: '%s-k8s-dashboard'
+                    type: string
+              - fromFieldPath: spec.crossplane.compositionRef.name
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          - name: app-opencost
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: kubernetes-dashboard
+                    spec:
+                      appRef:
+                        kind: ClusterApp
+                        name: opencost-2.4.0
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-opencost'
                     type: string
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
