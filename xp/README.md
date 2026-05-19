@@ -1,6 +1,6 @@
 # NKP and Crossplane
 
-NKP comes out of the box with supported open source apps that a delivered on installation. However, all of them are not needed nor required. So customers have to decide which ones they want the cluster users to enable. The idea here is to have a cluster profile that can deliver the cluster and all of their apps with a single kubernetes API.
+NKP comes out of the box with supported open source apps that are delivered on installation. However, all of them are not needed nor required. So customers have to decide which ones they want the cluster users to enable. The idea here is to have a cluster profile that can deliver the cluster and all of their apps with a single kubernetes API.
 
 ## What does it do?
 
