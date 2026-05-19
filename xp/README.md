@@ -57,8 +57,8 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 - In the NKP UI, go to the management cluster workspace
 - Create a new project named **xp-apis** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
-- Give admin permission to xp-apis service account (hack).\ 
-    `kubectl create clusterrolebinding xp-apis-admin --clusterrole=cluster-admin --serviceaccount=xp-apis:xp-apis`
+- Give admin permission to xp-apis service account (hack)
+    - `kubectl create clusterrolebinding xp-apis-admin --clusterrole=cluster-admin --serviceaccount=xp-apis:xp-apis`
 - Go to the project in NKP UI
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
 - Create a new GitOps source in the Project
