@@ -519,7 +519,7 @@ spec:
                 transforms:
                   - string:
                       type: Format
-                      fmt: '%s-certmanager'
+                      fmt: '%s-k8s-dashboard'
                     type: string
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
