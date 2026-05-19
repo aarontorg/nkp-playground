@@ -74,11 +74,13 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 
 ### Creating Clusters
 
-We can now create clusters with ClusterProfile api and two compositions we created. To do this, we'll utilize another gitops repo within the xp-apis project on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
+We can now create clusters with ClusterProfile api and two crossplane compositions we created. To do this, we'll utilize another gitops repo within the xp-apis project on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
 
-- Go to the management cluster workspace and go in to the xp-apis project
-- Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.
-- For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search of MODIFY_THIS
+In the nkp-playground repo
+ **Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.**
+ **For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search of MODIFY_THIS**
+
+- In the NKP UI, go to the management cluster workspace and go in to the xp-apis project
 - Create a new GitOps source
     **Name:** workload-clusters
     **Repository URL:** https://github.com/aarontorg/nkp-playground.git

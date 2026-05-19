@@ -11,12 +11,12 @@ spec:
   nkpVersion: v2.17.1
   pc:
     key: 'nx2Tech989!' # MODIFY_THIS
-    ipAddress: 10.8.26.7 # MODIFY_THIS
-    clusterName: RNO-SPOC001-3 # MODIFY_THIS
-    subnetName: primary-RNO-SPOC001-3 # MODIFY_THIS
+    ipAddress: 10.38.35.7 # MODIFY_THIS
+    clusterName: PHX-POC263 # MODIFY_THIS
+    subnetName: primary-PHX-POC263 # MODIFY_THIS
   loadBalancer:
-    start: 10.8.26.109 # MODIFY_THIS
-    end: 10.8.26.114 # MODIFY_THIS
-    vip: 10.8.26.108 # MODIFY_THIS
-  k8sImageName: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017
-  k8sVersion: v1.34.3
+    start: 10.38.35.116 # MODIFY_THIS
+    end: 10.38.35.120 # MODIFY_THIS
+    vip: 10.38.35.115 # MODIFY_THIS
+  k8sImageName: nkp-ubuntu-24.04-release-cis-1.34.3-20260226170017 # Use diff image if needed
+  k8sVersion: v1.34.3 # Update k8s when needed
