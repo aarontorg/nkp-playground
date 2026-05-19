@@ -476,12 +476,41 @@ spec:
                     kind: AppDeployment
                     metadata:
                       name: cert-manager
-                      namespace: nkp-flux-provisioned-phvwv-jjxpb
                     spec:
                       appRef:
                         appID: cert-manager
                         kind: ClusterApp
                         name: cert-manager-1.18.2
+            patches:
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.metadata.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-certmanager'
+                    type: string
+              - fromFieldPath: spec.crossplane.compositionRef.name
+                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          - name: app-kubernetes-dashboard
+            base:
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: kubernetes-provider
+                deletionPolicy: Delete
+                forProvider:
+                  manifest:
+                    apiVersion: apps.kommander.d2iq.io/v1alpha3
+                    kind: AppDeployment
+                    metadata:
+                      name: kubernetes-dashboard
+                    spec:
+                      appRef:
+                        kind: ClusterApp
+                        name: kubernetes-dashboard-7.14.0
             patches:
               - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.metadata.namespace
