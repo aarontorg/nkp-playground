@@ -847,7 +847,7 @@ spec:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
                     kind: AppDeployment
                     metadata:
-                      name: kubernetes-dashboard
+                      name: opencost
                     spec:
                       appRef:
                         kind: ClusterApp
