@@ -62,11 +62,11 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 - Go to the project in NKP UI
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
 - Create a new GitOps source in the Project
-    **Name:** apis
-    **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    **Branch:** main
-    **Path:** ./xp/apis
-    **Primary Git Secret:** *Select one created for access*
+    - **Name:** apis
+    - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
+    - **Branch:** main
+    - **Path:** ./xp/apis
+    - **Primary Git Secret:** *Select one created for access*
 - To verify install of apis
     `kubectl get workspaces -A` Should see devtest and production workspaces
     `kubectl get xrd` Should see clusterprofiles.nkp.io 
