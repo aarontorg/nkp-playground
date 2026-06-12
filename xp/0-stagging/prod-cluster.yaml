@@ -12,8 +12,8 @@ spec:
   workloadClusterName: production-1
   nkpVersion: v2.17.1
   pc:
-    key: 'nx2Tech989!' # MODIFY_THIS
-    ipAddress: 10.38.74.7 # MODIFY_THIS
+    key: 'nx2Tech464!' # MODIFY_THIS
+    ipAddress: 10.42.72.7 # MODIFY_THIS
     clusterName: PHX-POC072 # MODIFY_THIS
     subnetName: primary-PHX-POC072 # MODIFY_THIS
   loadBalancer:
