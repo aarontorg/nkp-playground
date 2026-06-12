@@ -18,12 +18,27 @@ kind: Workspace
 metadata:
   annotations:
     kommander.mesosphere.io/description: ""
-    kommander.mesosphere.io/display-name: devtest
+    kommander.mesosphere.io/display-name: devtest1
     workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
   labels:
     caren.nutanix.com/namespace-sync: ""
-    workspaces.kommander.mesosphere.io/workspace-name: devtest
-  name: devtest
+    workspaces.kommander.mesosphere.io/workspace-name: devtest1
+  name: devtest1
 spec:
-  namespaceName: devtest
+  namespaceName: devtest1
+  version: v2.17.1
+---
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Workspace
+metadata:
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: devtest2
+    workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
+  labels:
+    caren.nutanix.com/namespace-sync: ""
+    workspaces.kommander.mesosphere.io/workspace-name: devtest2
+  name: devtest2
+spec:
+  namespaceName: devtest2
   version: v2.17.1
