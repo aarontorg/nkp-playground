@@ -82,11 +82,11 @@ In the nkp-playground repo
 
 - In the NKP UI, go to the management cluster workspace and go in to the xp-apis project
 - Create a new GitOps source
-    **Name:** workload-clusters
-    **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    **Branch:** main
-    **Path:** ./xp/0-deploy
-    **Primary Git Secret:** *Select one created for access*
+    - **Name:** workload-clusters
+    - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
+    - **Branch:** main
+    - **Path:** ./xp/0-deploy
+    - **Primary Git Secret:** *Select one created for access*
 - After 1-2 minutes a new cluster should start being created
     - `kubectl get clusters -A`
 
