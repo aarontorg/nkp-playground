@@ -553,7 +553,7 @@ spec:
                     type: string
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-fluentbit
+          #- name: app-fluentbit
           #   base:
           #     apiVersion: kubernetes.crossplane.io/v1alpha2
           #     kind: Object
