@@ -1,4 +1,4 @@
 # NKP Playground
 -----------------
 
-- Repo for testing out NKP and Crossplane
+My repo for all things NKP
