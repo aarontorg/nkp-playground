@@ -413,8 +413,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies:
-                  - "*"
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
