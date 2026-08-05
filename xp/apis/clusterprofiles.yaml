@@ -1,13 +1,13 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: clusterprofiles.nkp.io
+  name: workloadcluster.nkp.io
 spec:
   scope: Cluster
   group: nkp.io
   names:
-    kind: ClusterProfile #Rename this after current res
-    plural: clusterprofiles # Rename
+    kind: WorkloadCluster #Rename this after current res
+    plural: workloadclusters # Rename
   versions:
     - name: v1alpha1
       served: true

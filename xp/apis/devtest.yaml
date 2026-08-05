@@ -1,4 +1,4 @@
-# Test profile has less apps
+# Test cluster has less apps
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
@@ -6,7 +6,7 @@ metadata:
 spec:
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: ClusterProfile
+    kind: WorkloadCluster
   mode: Pipeline
   pipeline:
     - step: patch-and-transform

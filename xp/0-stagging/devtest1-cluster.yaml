@@ -1,5 +1,5 @@
 apiVersion: nkp.io/v1alpha1
-kind: ClusterProfile
+kind: WorkloadCluster
 metadata:
   name: devtest1
 spec:
