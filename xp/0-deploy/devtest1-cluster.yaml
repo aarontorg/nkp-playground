@@ -10,7 +10,7 @@ spec:
   workSpaceName: devtest1
   nkpVersion: v2.17.1 # update when needed
   pc:
-    key: 'nx2Tech902!' # MODIFY_THIS
+    key: 'nx2Tech726!' # MODIFY_THIS
     ipAddress: 10.38.72.7 # MODIFY_THIS
     clusterName: PHX-POC300 # MODIFY_THIS
     subnetName: secondary-PHX-POC300 # MODIFY_THIS
