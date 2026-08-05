@@ -6,7 +6,7 @@ metadata:
 spec:
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
-    kind: ClusterProfile
+    kind: WorkloadCluster
   mode: Pipeline
   pipeline:
     - step: patch-and-transform
