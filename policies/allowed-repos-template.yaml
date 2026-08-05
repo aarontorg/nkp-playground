@@ -1,0 +1,31 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sallowedrepos
+  annotations:
+    description: "Requires container images to originate from a trusted corporate registry."
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sAllowedRepos
+      validation:
+        openAPIV3Schema:
+          type: object
+          properties:
+            repos:
+              type: array
+              items:
+                type: string
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8sallowedrepos
+
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          satisfied := [good | repo := input.parameters.repos[_]; good := startswith(container.image, repo)]
+          not any(satisfied)
+          msg := sprintf("Deployment blocked! Image '%v' comes from an untrusted registry. You must use an approved corporate registry.", [container.image])
+        }
+

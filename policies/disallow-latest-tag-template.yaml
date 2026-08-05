@@ -1,0 +1,43 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8sdisallowlatesttag
+  annotations:
+    description: >-
+      Requires container images to use an explicit, non-latest version tag.
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sDisallowLatestTag
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8sdisallowlatesttag
+
+        violation[{"msg": msg}] {
+          container := input.review.object.spec.containers[_]
+          has_latest_tag(container.image)
+          msg := sprintf("Container '%v' uses a forbidden 'latest' image tag in image '%v'. Please specify a fixed version.", [container.name, container.image])
+        }
+
+        # Check for explicit :latest tag
+        has_latest_tag(image) {
+          endswith(image, ":latest")
+        }
+
+        # Check for missing tag (Kubernetes defaults implicitly to latest)
+        has_latest_tag(image) {
+          # If it doesn't contain a colon at all, it lacks a tag
+          not contains(image, ":")
+        }
+
+        # Handle cases where registry contains a port (e.g. my-registry:5000/repo) but no image tag
+        has_latest_tag(image) {
+          contains(image, ":")
+          # Split by slash to isolate the image name from the registry domain
+          parts := split(image, "/")
+          last_part := parts[count(parts) - 1]
+          not contains(last_part, ":")
+        }
+

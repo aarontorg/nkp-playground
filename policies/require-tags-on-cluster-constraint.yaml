@@ -1,0 +1,48 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sRequiredClusterTags
+metadata:
+  name: enforce-corporate-cluster-tags
+spec:
+  match:
+    kinds:
+      - apiGroups: ["cluster.x-k8s.io"] # Targets Cluster API (NKP's provisioning engine)
+        kinds: ["Cluster"]
+    excludedNamespaces:
+      - "kube-system"
+      - "gatekeeper-system"
+      - "ntnx-system"
+      - "capi-system"
+      - "caaph-system"
+      - "capa-system"
+      - "capg-system"
+      - "capi-kubeadm-bootstrap-system"
+      - "capi-kubeadm-control-plane-system"
+      - "capi-system"
+      - "cappp-system"
+      - "capv-system"
+      - "capx-system"
+      - "capz-system"
+      - "caren-system"
+      - "cert-manager"
+      - "cilium-secrets"
+      - "container-object-storage-system"
+      - "default"
+      - "external-secrets"
+      - "git-operator-system"
+      - "kommander"
+      - "kommander-default-workspace"
+      - "kommander-flux"
+      - "kube-federation-system"
+      - "kube-node-lease"
+      - "kube-public"
+      - "kube-system"
+      - "metallb-system"
+      - "node-feature-discovery"
+      - "ntnx-system"
+      - "registry-system"
+  parameters:
+    labels:
+      - "owner"
+      - "cost-center"
+      - "data-classification"
+
