@@ -198,6 +198,7 @@ spec:
                       labels:
                         cluster.x-k8s.io/provider: nutanix
                         konvoy.d2iq.io/provider: nutanix
+                        cost-center: mine
                     spec:
                       clusterNetwork:
                         pods:
