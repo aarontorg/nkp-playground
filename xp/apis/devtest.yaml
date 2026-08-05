@@ -24,7 +24,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Observe", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: v1
@@ -87,7 +87,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Observe", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: v1
@@ -141,7 +141,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Observe", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: v1
@@ -189,7 +189,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Observe", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: cluster.x-k8s.io/v1beta1
@@ -444,7 +444,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -476,7 +476,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -508,7 +508,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Orphan #Delete
-                managementPolicies: ["Create", "Update"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -539,7 +539,7 @@ spec:
                 providerConfigRef:
                   name: kubernetes-provider
                 deletionPolicy: Delete
-                managementPolicies: ["Create", "Update", "Delete"]
+                managementPolicies: ["*"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
