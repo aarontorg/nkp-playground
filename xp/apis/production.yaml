@@ -440,7 +440,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -471,7 +472,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -502,7 +504,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -533,7 +536,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -564,7 +568,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -595,7 +600,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -626,7 +632,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -657,7 +664,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -688,7 +696,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -719,7 +728,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -750,7 +760,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -781,7 +792,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -812,7 +824,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
@@ -842,7 +855,8 @@ spec:
               spec:
                 providerConfigRef:
                   name: kubernetes-provider
-                deletionPolicy: Delete
+                deletionPolicy: Orphan #Delete
+                managementPolicies: ["Create", "Update"]
                 forProvider:
                   manifest:
                     apiVersion: apps.kommander.d2iq.io/v1alpha3
