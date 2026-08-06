@@ -4,8 +4,8 @@ NKP comes out of the box with supported open source apps that are delivered on i
 
 ## What does it do?
 
-- Create a single new kubernetes api (via crossplane) to create nkp mananaged clusters
-- Create two compositions of the api to create different configurations of clusters
+- Create a single new kubernetes api (via crossplane) to create nkp mananaged (workload) clusters
+- Create two compositions of the api to create different configurations of clusters one simpler for devtest and another one with more apps for prod.
 - Enables creating workload clusters with pre-configured apps
 
 ## Pre-Req/Setup
@@ -50,15 +50,35 @@ Ensure you are in the home directory of the nkp-playground git repo
 - `export K8sSA=$(kubectl get sa -n crossplane-system | grep kubernetes | awk '{print $1}')`
 - `kubectl create clusterrolebinding xp-k8s-admin --clusterrole=cluster-admin --serviceaccount=crossplane-system:${K8sSA}`
 
-### XP-APIS
+### SETUP
 
 To create two workspaces and install the custom crossplane apis (XRDs & compositions) we'll utilize NKPs project functionality on the Managment Cluster Workspace. All steps below are done in the NKP UI and or kubectl on the management cluster.
+
+#### Create the project
 
 - In the NKP UI, go to the management cluster workspace
 - Create a new project named **xp-apis** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
 - Give admin permission to xp-apis service account (hack)
     - `kubectl create clusterrolebinding xp-apis-admin --clusterrole=cluster-admin --serviceaccount=xp-apis:xp-apis`
+
+#### nkp-mgt Gitops Source
+
+The nkp-mgt gitops source will create workspaces and projects. *Might changes this to another crossplane API in the future
+
+- Go to the project in NKP UI
+- If needed, create a secret for the nkp-playground git ops repo with username and password keys
+- Create a new GitOps source in the Project
+    - **Name:** nkp-mgt
+    - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
+    - **Branch:** main
+    - **Path:** ./xp/nkp-mgt
+    - **Primary Git Secret:** *Select one created for access*
+- To verify install of workspaces (* add projects)
+    `kubectl get workspaces -A` Should see devtest and production workspaces
+
+#### apis Gitops Source
+
 - Go to the project in NKP UI
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
 - Create a new GitOps source in the Project
@@ -67,8 +87,7 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
     - **Branch:** main
     - **Path:** ./xp/apis
     - **Primary Git Secret:** *Select one created for access*
-- To verify install of apis
-    `kubectl get workspaces -A` Should see devtest and production workspaces
+- To verify install of workspaces (* add projects)
     `kubectl get xrd` Should see clusterprofiles.nkp.io 
     `kubectl get compositions` Should see devtest & production
 
