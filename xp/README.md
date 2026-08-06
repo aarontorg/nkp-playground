@@ -64,7 +64,7 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 
 #### nkp-mgt Gitops Source
 
-The nkp-mgt gitops source will create workspaces and projects. *Might changes this to another crossplane API in the future
+The nkp-mgt gitops source will create workspaces and in the future projects.
 
 - Go to the project in NKP UI
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
