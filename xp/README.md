@@ -74,7 +74,7 @@ The nkp-mgt gitops source will create workspaces and in the future projects.
     - **Branch:** main
     - **Path:** ./xp/nkp-mgt
     - **Primary Git Secret:** *Select one created for access*
-- To verify install of workspaces (* add projects)
+- To verify install of workspaces
     `kubectl get workspaces -A` Should see devtest and production workspaces
 
 #### apis Gitops Source

@@ -15,4 +15,3 @@ spec:
     repos:
       - "harbor.corporate.local/"  # Example Internal Private Registry
       - "://amazonaws.com" # Example Private AWS ECR
-
