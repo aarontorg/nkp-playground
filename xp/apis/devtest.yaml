@@ -408,163 +408,164 @@ spec:
                 toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image.name
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.metadata.labels.composition
-          - name: app-reloader
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                managementPolicies: ["*"]
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: reloader
-                    spec:
-                      appRef:
-                        kind: ClusterApp
-                        name: reloader-2.2.5 #XP
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-reloader'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-traefik
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                managementPolicies: ["*"]
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: traefik
-                    spec:
-                      appRef:
-                        appID: traefik
-                        kind: ClusterApp
-                        name: traefik-37.1.2
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-traefik'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-certmanager
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                managementPolicies: ["*"]
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: cert-manager
-                    spec:
-                      appRef:
-                        appID: cert-manager
-                        kind: ClusterApp
-                        name: cert-manager-1.18.2
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-certmanager'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-kubernetes-dashboard
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Orphan #Delete
-                managementPolicies: ["*"]
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: kubernetes-dashboard
-                    spec:
-                      appRef:
-                        kind: ClusterApp
-                        name: kubernetes-dashboard-7.14.0
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-k8s-dashboard'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-opencost
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                managementPolicies: ["*"]
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: opencost
-                    spec:
-                      appRef:
-                        kind: ClusterApp
-                        name: opencost-2.4.0
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-opencost'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          ### APP DEPLOYMENTS
+          # - name: app-reloader
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       managementPolicies: ["*"]
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: reloader
+          #           spec:
+          #             appRef:
+          #               kind: ClusterApp
+          #               name: reloader-2.2.5 #XP
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-reloader'
+          #           type: string
+          #     - fromFieldPath: spec.crossplane.compositionRef.name
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          # - name: app-traefik
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       managementPolicies: ["*"]
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: traefik
+          #           spec:
+          #             appRef:
+          #               appID: traefik
+          #               kind: ClusterApp
+          #               name: traefik-37.1.2
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-traefik'
+          #           type: string
+          #     - fromFieldPath: spec.crossplane.compositionRef.name
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          # - name: app-certmanager
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       managementPolicies: ["*"]
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: cert-manager
+          #           spec:
+          #             appRef:
+          #               appID: cert-manager
+          #               kind: ClusterApp
+          #               name: cert-manager-1.18.2
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-certmanager'
+          #           type: string
+          #     - fromFieldPath: spec.crossplane.compositionRef.name
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          # - name: app-kubernetes-dashboard
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Orphan #Delete
+          #       managementPolicies: ["*"]
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: kubernetes-dashboard
+          #           spec:
+          #             appRef:
+          #               kind: ClusterApp
+          #               name: kubernetes-dashboard-7.14.0
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-k8s-dashboard'
+          #           type: string
+          #     - fromFieldPath: spec.crossplane.compositionRef.name
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          # - name: app-opencost
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       managementPolicies: ["*"]
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: opencost
+          #           spec:
+          #             appRef:
+          #               kind: ClusterApp
+          #               name: opencost-2.4.0
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-opencost'
+          #           type: string
+          #     - fromFieldPath: spec.crossplane.compositionRef.name
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
           #- name: app-fluentbit
           #   base:
           #     apiVersion: kubernetes.crossplane.io/v1alpha2
@@ -596,38 +597,38 @@ spec:
           #           type: string
           #     - fromFieldPath: spec.crossplane.compositionRef.name
           #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
-          - name: app-gatekeeper
-            base:
-              apiVersion: kubernetes.crossplane.io/v1alpha2
-              kind: Object
-              spec:
-                providerConfigRef:
-                  name: kubernetes-provider
-                deletionPolicy: Delete
-                managementPolicies: ["*"]
-                forProvider:
-                  manifest:
-                    apiVersion: apps.kommander.d2iq.io/v1alpha3
-                    kind: AppDeployment
-                    metadata:
-                      name: gatekeeper
-                    spec:
-                      appRef:
-                        appID: gatekeeper
-                        kind: ClusterApp
-                        name: gatekeeper-3.20.1
-            patches:
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.metadata.namespace
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-gatekeeper'
-                    type: string
-              - fromFieldPath: spec.crossplane.compositionRef.name
-                toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
+          # - name: app-gatekeeper
+          #   base:
+          #     apiVersion: kubernetes.crossplane.io/v1alpha2
+          #     kind: Object
+          #     spec:
+          #       providerConfigRef:
+          #         name: kubernetes-provider
+          #       deletionPolicy: Delete
+          #       managementPolicies: ["*"]
+          #       forProvider:
+          #         manifest:
+          #           apiVersion: apps.kommander.d2iq.io/v1alpha3
+          #           kind: AppDeployment
+          #           metadata:
+          #             name: gatekeeper
+          #           spec:
+          #             appRef:
+          #               appID: gatekeeper
+          #               kind: ClusterApp
+          #               name: gatekeeper-3.20.1
+          #   patches:
+          #     - fromFieldPath: spec.workSpaceName
+          #       toFieldPath: spec.forProvider.manifest.metadata.namespace
+          #     - fromFieldPath: spec.workloadClusterName
+          #       toFieldPath: metadata.name
+          #       transforms:
+          #         - string:
+          #             type: Format
+          #             fmt: '%s-gatekeeper'
+          #           type: string
+          #     - fromFieldPath: spec.crossplane.compositionRef.name
+          #       toFieldPath: spec.forProvider.manifest.spec.clusterSelector.matchLabels.composition
           # - name: app-grafana-logging
           #   base:
           #     apiVersion: kubernetes.crossplane.io/v1alpha2
