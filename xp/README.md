@@ -88,7 +88,7 @@ The nkp-mgt gitops source will create workspaces and in the future projects.
     - **Path:** ./xp/apis
     - **Primary Git Secret:** *Select one created for access*
 - To verify install of workspaces (* add projects)
-    `kubectl get xrd` Should see clusterprofiles.nkp.io 
+    `kubectl get xrd` Should see workloadclusters.nkp.io 
     `kubectl get compositions` Should see devtest & production
 
 ### Creating Clusters
