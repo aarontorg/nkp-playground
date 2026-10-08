@@ -18,5 +18,5 @@ spec:
     start: 10.55.23.139 # MODIFY_THIS
     end: 10.55.23.140 # MODIFY_THIS
     vip: 10.55.23.138 # MODIFY_THIS
-  k8sImageName: nkp-ubuntu-24.04-release-cis-1.34.3-20260504025514.qcow2 # Use diff image if needed
+  nkpImageName: nkp-ubuntu-24.04-release-cis-1.34.3-20260504025514.qcow2 # Use diff image if needed
   k8sVersion: v1.34.3 # Update k8s when needed

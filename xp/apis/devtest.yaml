@@ -213,7 +213,7 @@ spec:
                         host: ""
                         port: 0
                       topology:
-                        class: nkp-nutanix-v2.17.1 # Possible XP
+                        #class: nkp-nutanix-v2.17.1 # Possible XP
                         controlPlane:
                           metadata: {}
                           replicas: 3
@@ -307,7 +307,7 @@ spec:
                                   secretRef:
                                     name: patch #XP
                                 insecure: true
-                        version: patch #XP
+                        #version: patch #XP
                         workers:
                           machineDeployments:
                           - class: default-worker
@@ -378,7 +378,7 @@ spec:
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].start
               - fromFieldPath: spec.pc.clusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.name
-              - fromFieldPath: spec.k8sImageName
+              - fromFieldPath: spec.nkpImageName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.image.name
               - fromFieldPath: spec.pc.subnetName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.subnets[0].name
@@ -404,7 +404,7 @@ spec:
                 toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.cluster.name
               - fromFieldPath: spec.pc.subnetName
                 toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.subnets[0].name
-              - fromFieldPath: spec.k8sImageName
+              - fromFieldPath: spec.nkpImageName
                 toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image.name
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.metadata.labels.composition
