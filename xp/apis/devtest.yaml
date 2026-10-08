@@ -360,6 +360,7 @@ spec:
                       fmt: '%s-pc-credentials'
               - fromFieldPath: spec.nkpVersion
                 toFieldPath: spec.forProvider.manifest.spec.topology.class
+                transforms:
                   - type: string
                     string:
                       type: Format
