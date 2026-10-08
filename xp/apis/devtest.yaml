@@ -213,7 +213,7 @@ spec:
                         host: ""
                         port: 0
                       topology:
-                        #class: nkp-nutanix-v2.17.1 # Possible XP
+                        class: patch # Possible XP
                         controlPlane:
                           metadata: {}
                           replicas: 3
@@ -358,6 +358,12 @@ spec:
                     string:
                       type: Format
                       fmt: '%s-pc-credentials'
+              - fromFieldPath: spec.nkpVersion
+                toFieldPath: spec.forProvider.manifest.spec.topology.class
+                  - type: string
+                    string:
+                      type: Format
+                      fmt: 'nkp-nutanix-%s'
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.csi.providers.nutanix.credentials.secretRef.name
                 transforms:
