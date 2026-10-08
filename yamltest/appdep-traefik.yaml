@@ -1,9 +1,0 @@
-apiVersion: apps.kommander.d2iq.io/v1alpha3
-kind: AppDeployment
-metadata:
-  name: traefik
-  namespace: yamltest-2026n-1
-spec:
-  appRef:
-    kind: ClusterApp
-    name: traefik-37.1.2
