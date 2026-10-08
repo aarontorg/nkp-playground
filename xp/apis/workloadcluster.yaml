@@ -62,7 +62,7 @@ spec:
                 - workloadClusterName
                 - workSpaceName
                 - k8sVersion
-                - k8sImageName
+                - nkpImageName
                 - pc
                 - loadBalancer
             status:
