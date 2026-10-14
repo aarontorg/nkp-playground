@@ -1,12 +1,12 @@
 apiVersion: nkp.io/v1alpha1
 kind: WorkloadCluster
 metadata:
-  name: devtest1
+  name: devtestx
 spec:
   crossplane:
     compositionRef:
       name: devtest
-  workloadClusterName: devtest-1 # Change name if you want
+  workloadClusterName: devtest-x # Change name if you want
   workSpaceName: devtest1
   nkpVersion: v2.17.1 # update when needed
   pc:
