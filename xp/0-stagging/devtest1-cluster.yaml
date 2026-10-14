@@ -20,3 +20,4 @@ spec:
     vip: 10.8.62.138 # MODIFY_THIS
   nkpImageName: nkp-ubuntu-24.04-release-cis-1.34.3-20260504025514.qcow2 # Use diff image if needed
   k8sVersion: v1.34.3 # Update k8s when needed
+  pubKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKC8Pq5OrSY8AKKzne6JCKUKlP+CTm2fPy4nRNO7Yq7m nutanix@ubuntu"

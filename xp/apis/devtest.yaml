@@ -311,8 +311,7 @@ spec:
                             users:
                               - name: nutanix
                                 sshAuthorizedKeys:
-                                  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJD0xFIQp7Xs3KAzcU8b0Tdl5ljrU/evl6T+dOYtEm2 
-                                    nutanix@ubuntu
+                                  - "patch"
                                 sudo: ALL=(ALL) NOPASSWD:ALL
                         #version: patch #XP
                         workers:
@@ -406,6 +405,8 @@ spec:
                     string:
                       type: Format
                       fmt: '%s-pc-credentials'
+              - fromFieldPath: spec.pubKey
+                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.users[0].sshAuthorizedKeys[0]
               - fromFieldPath: spec.pc.ipAddress
                 toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.url
                 transforms:

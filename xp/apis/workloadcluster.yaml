@@ -58,6 +58,8 @@ spec:
                     - start
                     - end
                     - vip
+                pubKey:
+                  type: string
               required:
                 - workloadClusterName
                 - workSpaceName
