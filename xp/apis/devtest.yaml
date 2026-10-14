@@ -308,6 +308,12 @@ spec:
                                   secretRef:
                                     name: patch #XP
                                 insecure: true
+                            users:
+                              - name: nutanix
+                                sshAuthorizedKeys:
+                                  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEJD0xFIQp7Xs3KAzcU8b0Tdl5ljrU/evl6T+dOYtEm2 
+                                    nutanix@ubuntu
+                                sudo: ALL=(ALL) NOPASSWD:ALL
                         #version: patch #XP
                         workers:
                           machineDeployments:
