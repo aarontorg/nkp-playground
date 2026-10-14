@@ -198,6 +198,7 @@ spec:
                       labels:
                         cluster.x-k8s.io/provider: nutanix
                         konvoy.d2iq.io/provider: nutanix
+                        infraId: global-nutanix-credentials
                         cost-center: mine
                         data-classification: important
                         owner: me
