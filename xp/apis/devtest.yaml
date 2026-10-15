@@ -222,7 +222,8 @@ spec:
                         #  host: ""
                         #  port: 0
                         topology:
-                          class: patch # Possible XP
+                          classRef:
+                            name: patch # Possible XP
                           controlPlane:
                             metadata: {}
                             replicas: 3
@@ -442,7 +443,7 @@ spec:
                       type: Format
                       fmt: '%s-pc-credentials'
               - fromFieldPath: spec.nkpVersion
-                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.class
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.classRef.name
                 transforms:
                   - type: string
                     string:
