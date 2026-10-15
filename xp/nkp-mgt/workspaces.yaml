@@ -3,21 +3,6 @@ kind: Workspace
 metadata:
   annotations:
     kommander.mesosphere.io/description: ""
-    kommander.mesosphere.io/display-name: production
-    workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
-  labels:
-    caren.nutanix.com/namespace-sync: ""
-    workspaces.kommander.mesosphere.io/workspace-name: production
-  name: production
-spec:
-  namespaceName: production
-  version: v2.17.1
----
-apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
-kind: Workspace
-metadata:
-  annotations:
-    kommander.mesosphere.io/description: ""
     kommander.mesosphere.io/display-name: devtest1
     workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
   labels:
