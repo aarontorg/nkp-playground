@@ -8,7 +8,7 @@ spec:
       name: devtest
   workloadClusterName: devtest-1 # Change name if you want
   workSpaceName: devtest1
-  nkpVersion: v2.18.1 # update when needed
+  nkpVersion: v2.18.0 # update when needed
   pc:
     key: 'nx2Tech705!' # MODIFY_THIS
     ipAddress: 10.8.62.7 # MODIFY_THIS
