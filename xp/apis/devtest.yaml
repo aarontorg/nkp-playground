@@ -387,9 +387,9 @@ spec:
               - fromFieldPath: spec.nkpVersion
                 toFieldPath: spec.forProvider.manifest.spec.version
               - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.kommanderClusterRef.namespace
+                toFieldPath: spec.forProvider.manifest.spec.kommanderClusterRef.namespace
               - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.kommanderClusterRef.name
+                toFieldPath: spec.forProvider.manifest.spec.kommanderClusterRef.name
               - fromFieldPath: spec.nkpVersion
                 toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.platform.version
               - fromFieldPath: spec.workloadClusterName
