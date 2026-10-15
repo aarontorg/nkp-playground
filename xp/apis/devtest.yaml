@@ -218,9 +218,9 @@ spec:
                           services:
                             cidrBlocks:
                             - 10.96.0.0/12
-                        controlPlaneEndpoint:
-                          host: ""
-                          port: 0
+                        #controlPlaneEndpoint:
+                        #  host: ""
+                        #  port: 0
                         topology:
                           class: patch # Possible XP
                           controlPlane:
@@ -385,7 +385,7 @@ spec:
             patches:
               # NEW FOR 2.18
               - fromFieldPath: spec.nkpVersion
-                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.version
+                toFieldPath: spec.forProvider.manifest.spec.version
               - fromFieldPath: spec.workSpaceName
                 toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.kommanderClusterRef.namespace
               - fromFieldPath: spec.workloadClusterName
