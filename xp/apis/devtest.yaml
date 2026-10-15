@@ -192,9 +192,15 @@ spec:
                 managementPolicies: ["*"]
                 forProvider:
                   manifest:
-                    apiVersion: cluster.x-k8s.io/v1beta1
-                    kind: Cluster
+                    apiVersion: clusters.nkp.nutanix.com/v1alpha1 #cluster.x-k8s.io/v1beta1
+                    kind: NKPCluster #Cluster
                     metadata:
+                      annotations:
+                        clusters.nkp.nutanix.com/adopted-capi-cluster: ""
+                        clusters.nkp.nutanix.com/adopted-kommander-cluster: ""
+                      finalizers:
+                        - clusters.nkp.nutanix.com/capicluster-cleanup
+                        - clusters.nkp.nutanix.com/kommandercluster-cleanup
                       labels:
                         cluster.x-k8s.io/provider: nutanix
                         konvoy.d2iq.io/provider: nutanix
@@ -202,147 +208,217 @@ spec:
                         cost-center: mine
                         data-classification: important
                         owner: me
+                        topology.cluster.x-k8s.io/owned: ""
                     spec:
-                      clusterNetwork:
-                        pods:
-                          cidrBlocks:
-                          - 192.168.0.0/16
-                        services:
-                          cidrBlocks:
-                          - 10.96.0.0/12
-                      controlPlaneEndpoint:
-                        host: ""
-                        port: 0
-                      topology:
-                        class: patch # Possible XP
-                        controlPlane:
-                          metadata: {}
-                          replicas: 3
-                        variables:
-                        - name: clusterConfig
-                          value:
-                            addons:
-                              ccm:
-                                strategy: HelmAddon
-                              clusterAutoscaler:
-                                strategy: HelmAddon
-                              cni:
-                                provider: Cilium
-                                strategy: HelmAddon
-                              cosi:
-                                strategy: HelmAddon
-                              csi:
-                                defaultStorage:
-                                  provider: nutanix
-                                  storageClassConfig: volume
-                                providers:
-                                  nutanix:
-                                    credentials:
-                                      secretRef:
-                                        name: patch #XP
-                                    storageClassConfigs:
-                                      volume:
-                                        allowExpansion: true
-                                        parameters:
-                                          csi.storage.k8s.io/fstype: ext4
-                                          description: CSI StorageClass nutanix-volume for yamltest
-                                          flashMode: DISABLED
-                                          hypervisorAttached: ENABLED
-                                          storageContainer: SelfServiceContainer
-                                          storageType: NutanixVolumes
-                                        reclaimPolicy: Delete
-                                        volumeBindingMode: WaitForFirstConsumer
-                                    strategy: HelmAddon
-                                snapshotController:
+                      capiCluster:
+                        clusterNetwork:
+                          pods:
+                            cidrBlocks:
+                            - 192.168.0.0/16
+                          services:
+                            cidrBlocks:
+                            - 10.96.0.0/12
+                        controlPlaneEndpoint:
+                          host: ""
+                          port: 0
+                        topology:
+                          class: patch # Possible XP
+                          controlPlane:
+                            metadata: {}
+                            replicas: 3
+                          variables:
+                          - name: clusterConfig
+                            value:
+                              addons:
+                                ccm:
                                   strategy: HelmAddon
-                              konnectorAgent:
-                                credentials:
-                                  secretRef:
-                                    name: patch # XP
-                              nfd:
-                                strategy: HelmAddon
-                              registry:
-                                provider: CNCF Distribution
-                              serviceLoadBalancer:
-                                configuration:
-                                  addressRanges:
-                                  - end: patch # XP
-                                    start: patch # XP
-                                provider: MetalLB
-                            controlPlane:
-                              autoRenewCertificates:
-                                daysBeforeExpiry: 180
-                              nodeRegistration:
-                                ignorePreflightErrors:
-                                - SystemVerification
+                                clusterAutoscaler:
+                                  strategy: HelmAddon
+                                cni:
+                                  provider: Cilium
+                                  strategy: HelmAddon
+                                cosi:
+                                  strategy: HelmAddon
+                                csi:
+                                  defaultStorage:
+                                    provider: nutanix
+                                    storageClassConfig: volume
+                                  providers:
+                                    nutanix:
+                                      credentials:
+                                        secretRef:
+                                          name: patch #XP
+                                      storageClassConfigs:
+                                        volume:
+                                          allowExpansion: true
+                                          parameters:
+                                            csi.storage.k8s.io/fstype: ext4
+                                            description: CSI StorageClass nutanix-volume for yamltest
+                                            flashMode: DISABLED
+                                            hypervisorAttached: ENABLED
+                                            storageContainer: SelfServiceContainer
+                                            storageType: NutanixVolumes
+                                          reclaimPolicy: Delete
+                                          volumeBindingMode: WaitForFirstConsumer
+                                      strategy: HelmAddon
+                                  snapshotController:
+                                    strategy: HelmAddon
+                                konnectorAgent:
+                                  credentials:
+                                    secretRef:
+                                      name: patch # XP
+                                nfd:
+                                  strategy: HelmAddon
+                                registry:
+                                  provider: CNCF Distribution
+                                serviceLoadBalancer:
+                                  configuration:
+                                    addressRanges:
+                                    - end: patch # XP
+                                      start: patch # XP
+                                  provider: MetalLB
+                              controlPlane:
+                                autoRenewCertificates:
+                                  daysBeforeExpiry: 180
+                                nodeRegistration:
+                                  ignorePreflightErrors:
+                                  - SystemVerification
+                                nutanix:
+                                  machineDetails:
+                                    bootType: uefi
+                                    cluster:
+                                      name: patch #XP
+                                      type: name
+                                    image:
+                                      name: patch #XP
+                                      type: name
+                                    memorySize: 16Gi
+                                    subnets:
+                                    - name: patch #XP
+                                      type: name
+                                    systemDiskSize: 80Gi
+                                    vcpuSockets: 4
+                                    vcpusPerSocket: 1
+                              dns:
+                                coreDNS: {}
+                              encryptionAtRest:
+                                providers:
+                                - secretbox: {}
+                              kubeProxy:
+                                mode: disabled
                               nutanix:
-                                machineDetails:
-                                  bootType: uefi
-                                  cluster:
-                                    name: patch #XP
-                                    type: name
-                                  image:
-                                    name: patch #XP
-                                    type: name
-                                  memorySize: 16Gi
-                                  subnets:
-                                  - name: patch #XP
-                                    type: name
-                                  systemDiskSize: 80Gi
-                                  vcpuSockets: 4
-                                  vcpusPerSocket: 1
-                            dns:
-                              coreDNS: {}
-                            encryptionAtRest:
-                              providers:
-                              - secretbox: {}
-                            kubeProxy:
-                              mode: disabled
-                            nutanix:
-                              controlPlaneEndpoint:
-                                port: 6443
-                                virtualIP:
-                                  provider: KubeVIP
-                              prismCentralEndpoint:
-                                credentials:
-                                  secretRef:
-                                    name: patch #XP
-                                insecure: true
-                            users:
-                              - name: nutanix
-                                sshAuthorizedKeys:
-                                  - "patch"
-                                sudo: ALL=(ALL) NOPASSWD:ALL
-                        #version: patch #XP
-                        workers:
-                          machineDeployments:
-                          - class: default-worker
-                            metadata:
-                              annotations:
-                                cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "4"
-                                cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "4"
-                            name: md-0
-                            variables:
-                              overrides:
-                              - name: workerConfig
-                                value:
-                                  nodeRegistration:
-                                    ignorePreflightErrors:
-                                    - SystemVerification
-                                  nutanix:
-                                    machineDetails:
-                                      bootType: uefi
-                                      cluster:
-                                        type: name
-                                      image:
-                                        type: name
-                                      memorySize: 32Gi
-                                      subnets:
-                                      - type: name
-                                      systemDiskSize: 80Gi
-                                      vcpuSockets: 8
-                                      vcpusPerSocket: 1
+                                controlPlaneEndpoint:
+                                  port: 6443
+                                  virtualIP:
+                                    provider: KubeVIP
+                                prismCentralEndpoint:
+                                  credentials:
+                                    secretRef:
+                                      name: patch #XP
+                                  insecure: true
+                              users:
+                                - name: nutanix
+                                  sshAuthorizedKeys:
+                                    - "patch"
+                                  sudo: ALL=(ALL) NOPASSWD:ALL
+                          workers:
+                            machineDeployments:
+                            - class: default-worker
+                              metadata:
+                                annotations:
+                                  cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "4"
+                                  cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "4"
+                              name: md-0
+                              variables:
+                                overrides:
+                                - name: workerConfig
+                                  value:
+                                    nodeRegistration:
+                                      ignorePreflightErrors:
+                                      - SystemVerification
+                                    nutanix:
+                                      machineDetails:
+                                        bootType: uefi
+                                        cluster:
+                                          type: name
+                                        image:
+                                          type: name
+                                        memorySize: 32Gi
+                                        subnets:
+                                        - type: name
+                                        systemDiskSize: 80Gi
+                                        vcpuSockets: 8
+                                        vcpusPerSocket: 1
+                      capiClusterRef:
+                        name: patch
+                        namespace: patch
+                      kommanderCluster:
+                        labels:
+                          cluster.x-k8s.io/cluster-name: patch
+                          cluster.x-k8s.io/provider: nutanix
+                          composition: devtest
+                          cost-center: mine
+                          data-classification: important
+                          infraId: global-nutanix-credentials
+                          owner: me
+                          topology.cluster.x-k8s.io/owned: ""
+                        spec:
+                          clusterRef:
+                            capiCluster:
+                              name: patch
+                              namespace: patch
+                          kubeconfigRef:
+                            name: patch #devtest-1-kubeconfig
+                          namespaceRef:
+                            name: patch #devtest1
+                          ociRegistry:
+                            certSecretRef:
+                              name: patch #devtest-1-oci-cert
+                            mirrorURL: https://cncf-distribution-registry-docker-registry.registry-system.svc.cluster.local:443 #Only will work for internal reg
+                          platform:
+                            version: patch #v2.18.0
+                      kommanderClusterRef:
+                        name: patch #devtest-1
+                        namespace: patch #devtest1
+                      version: patch #v2.18.0
+                          
             patches:
+              # NEW FOR 2.18
+              - fromFieldPath: spec.nkpVersion
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.version
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.kommanderClusterRef.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.kommanderClusterRef.name
+              - fromFieldPath: spec.nkpVersion
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.platform.version
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.ociRegistry.certSecretRef.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-oci-cert'
+                    type: string
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.namespaceRef.name
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.kubeconfigRef.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-kubeconfig'
+                    type: string
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.clusterRef.capiCluster.namespace
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.clusterRef.capiCluster.name
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.labels["cluster.x-k8s.io/cluster-name"]
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.name
+              - fromFieldPath: spec.workSpaceName
+                toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.namespace
+              #
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
               - fromFieldPath: spec.workSpaceName
@@ -359,69 +435,69 @@ spec:
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.labels["cluster.x-k8s.io/cluster-name"]
               - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.ccm.credentials.secretRef.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.addons.ccm.credentials.secretRef.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-pc-credentials'
               - fromFieldPath: spec.nkpVersion
-                toFieldPath: spec.forProvider.manifest.spec.topology.class
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.class
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: 'nkp-nutanix-%s'
               - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.csi.providers.nutanix.credentials.secretRef.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.addons.csi.providers.nutanix.credentials.secretRef.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-pc-credentials-for-csi'
               - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.konnectorAgent.credentials.secretRef.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.addons.konnectorAgent.credentials.secretRef.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-pc-credentials-for-konnector-agent'
               - fromFieldPath: spec.loadBalancer.end
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].end
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].end
               - fromFieldPath: spec.loadBalancer.start
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].start
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.addons.serviceLoadBalancer.configuration.addressRanges[0].start
               - fromFieldPath: spec.pc.clusterName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.controlPlane.nutanix.machineDetails.cluster.name
               - fromFieldPath: spec.nkpImageName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.image.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.controlPlane.nutanix.machineDetails.image.name
               - fromFieldPath: spec.pc.subnetName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.controlPlane.nutanix.machineDetails.subnets[0].name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.controlPlane.nutanix.machineDetails.subnets[0].name
               - fromFieldPath: spec.loadBalancer.vip
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.controlPlaneEndpoint.host
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.nutanix.controlPlaneEndpoint.host
               - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.credentials.secretRef.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.nutanix.prismCentralEndpoint.credentials.secretRef.name
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: '%s-pc-credentials'
               - fromFieldPath: spec.pubKey
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.users[0].sshAuthorizedKeys[0]
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.users[0].sshAuthorizedKeys[0]
               - fromFieldPath: spec.pc.ipAddress
-                toFieldPath: spec.forProvider.manifest.spec.topology.variables[0].value.nutanix.prismCentralEndpoint.url
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.variables[0].value.nutanix.prismCentralEndpoint.url
                 transforms:
                   - type: string
                     string:
                       type: Format
                       fmt: "https://%s:9440"
               - fromFieldPath: spec.k8sVersion
-                toFieldPath: spec.forProvider.manifest.spec.topology.version
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.version
               - fromFieldPath: spec.pc.clusterName
-                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.cluster.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.cluster.name
               - fromFieldPath: spec.pc.subnetName
-                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.subnets[0].name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.subnets[0].name
               - fromFieldPath: spec.nkpImageName
-                toFieldPath: spec.forProvider.manifest.spec.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image.name
+                toFieldPath: spec.forProvider.manifest.spec.capiCluster.topology.workers.machineDeployments[0].variables.overrides[0].value.nutanix.machineDetails.image.name
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.metadata.labels.composition
           ### APP DEPLOYMENTS
