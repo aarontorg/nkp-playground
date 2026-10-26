@@ -2,7 +2,7 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: devtest
+  name: workload
 spec:
   compositeTypeRef:
     apiVersion: nkp.io/v1alpha1
@@ -357,7 +357,7 @@ spec:
                         labels:
                           cluster.x-k8s.io/cluster-name: patch
                           cluster.x-k8s.io/provider: nutanix
-                          composition: devtest
+                          composition: worklaod
                           cost-center: mine
                           data-classification: important
                           infraId: global-nutanix-credentials
