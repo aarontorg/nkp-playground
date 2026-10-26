@@ -45,13 +45,14 @@ Ensure you are in the home directory of the nkp-playground git repo
 ##### Give xp-k8s service accounts cluster-admin permissions (hack)
 
 - `export K8sSA=$(kubectl get sa -n crossplane-system | grep kubernetes | awk '{print $1}')`
+- `echo $K8sSA` [should be crossplane-contrib-provider-kubernetes-xxxxxxxxxx]
 - `kubectl create clusterrolebinding xp-k8s-admin --clusterrole=cluster-admin --serviceaccount=crossplane-system:${K8sSA}`
 
 ### SETUP
 
 #### Create the project
 
-- In the NKP UI, go to the management cluster workspace
+- In the NKP UI, go to the Management Cluster Workspace
 - Create a new project named **xp-apis** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
 - Give admin permission to xp-apis service account (hack)
@@ -59,11 +60,13 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 #### Create a Workspace for your workload clusters
 
-- In NKP UI, create a workspace
+In NKP, Workspaces are utilized to configure clusters and enable application for every cluster created within the workspace
+
+- In NKP UI, create a new workspace
     - **Name:** workloads
     - **ID/Namespace:** workloads
     - **Description:** workspace to create clusters
-- Once workspace is created, enable the following Applications
+- Once workspace is created, verify the following Applications are enabled.
     - Foundational : Reloader, Traefik
     - Security: Gatekeeper, cert-manager
     - Monitoring: Headlamp
@@ -71,11 +74,11 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 #### apis Gitops Source
 
-Create a gitops source to install the crossplane apis
-
-- Go to the project in NKP UI
+- In the NKP-UI, Go to the Management Cluster Workspace.
+- Go to Projects and select the xp-apis project
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
-- Create a new GitOps source in the Project
+- Go to the Continuous Deployment (CD) tab
+- Add a new GitOps source in the Project
     - **Name:** apis
     - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
     - **Branch:** main
@@ -91,7 +94,7 @@ We can now create clusters with newly create Crossplane created WorkloadCluster 
 
 In the nkp-playground repo
  **Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.**
- **For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search of MODIFY_THIS**
+ **For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search for #MODIFY_THIS.
 
 - In the NKP UI, go to the management cluster workspace and go in to the xp-apis project
 - Create a new GitOps source
@@ -100,8 +103,9 @@ In the nkp-playground repo
     - **Branch:** main
     - **Path:** ./xp/0-deploy
     - **Primary Git Secret:** *Select one created for access*
-- After 1-2 minutes a new cluster should start being created
-    - `kubectl get clusters -A`
+- After 1-2 minutes a new cluster should start being created if you have a cluster in 0-deploy folder
+    - `kubectl get clusters -A` [new cluster should be in list]
+    - `kubectl get providers.kubernetes` [new provider config with the clusters name]
     - Showcase the gatekeeper security policy that has been created on the workload cluster ... 
 
 #### Details on Setup
