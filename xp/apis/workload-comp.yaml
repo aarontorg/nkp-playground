@@ -335,9 +335,9 @@ spec:
                                         systemDiskSize: 80Gi
                                         vcpuSockets: 8
                                         vcpusPerSocket: 1
-                      capiClusterRef:
-                        name: patch
-                        namespace: patch
+                      #capiClusterRef:
+                      #  name: patch
+                      #  namespace: patch
                       kommanderCluster:
                         labels:
                           cluster.x-k8s.io/cluster-name: patch
@@ -398,10 +398,10 @@ spec:
                 toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.clusterRef.capiCluster.namespace
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.clusterRef.capiCluster.name
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.name
-              - fromFieldPath: spec.workSpaceName
-                toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.namespace
+              #- fromFieldPath: spec.workloadClusterName
+              #  toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.name
+              # - fromFieldPath: spec.workSpaceName
+              #  toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.namespace
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
               - fromFieldPath: spec.workSpaceName
