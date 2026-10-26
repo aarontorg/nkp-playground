@@ -11,7 +11,7 @@ metadata:
   name: devtest1
 spec:
   namespaceName: devtest1
-  version: v2.17.1
+  #version: v2.17.1
 ---
 apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
 kind: Workspace
@@ -26,4 +26,4 @@ metadata:
   name: devtest2
 spec:
   namespaceName: devtest2
-  version: v2.17.1
+  #version: v2.17.1
