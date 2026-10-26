@@ -1,23 +1,22 @@
 # NKP and Crossplane
 
-NKP comes out of the box with supported open source apps that are delivered on installation. However, all of them are not needed nor required. So customers have to decide which ones they want the cluster users to enable. The idea here is to have a cluster profile that can deliver the cluster and all of their apps with a single kubernetes API.
+NKP is a platform to standardize kubernetes operations. Crossplane is a tool to allow you to build custom APIs to further standardization of infrastructure delivery. Together,
+they become a very powerful combination to deliver the quintessential cloud native platform!
 
-## What does it do?
+## What will following these steps do
 
-- Create a single new kubernetes api (via crossplane) to create nkp mananaged (workload) clusters
-- Create two compositions of the api to create different configurations of clusters one simpler for devtest and another one with more apps for prod.
-- Enables creating workload clusters with pre-configured apps
+- Create a single new kubernetes api and crossplane composition to create NKP managed workload clusters
+- In addition to creating the clusters, the Crossplane API will also deploy a simple policy to the clusters to dissallow using the latest image tag
 
 ## Pre-Req/Setup
 
 - Install NKP
-- Have about X amount of IP address available for use on the 3 clusters that will be created
 - Clone this git repo: 
     `git clone https://github.com/aarontorg/nkp-playground.git` **Request permission if needed**
 
 ## Management Cluster
 
-All kubectl commands are executed on the management cluster.
+The following is done on the management cluster
 
 ### Install and Configure Crossplane
 
@@ -32,14 +31,12 @@ Verify all pods in crossplane-system namespace are running
 
 - `kubectl get pods -n crossplane-system`
 
-#### Install Kubernetes and Helm Crossplane Providers
+#### Install Crossplane Kubernetes Provider
 
 Ensure you are in the home directory of the nkp-playground git repo
 
 - `kubectl apply -f ./xp/config/providers.yaml`
 - `kubectl apply -f ./xp/config/provider-cfgs.yaml`
-
-** Helm is installed, but not used yet.
 
 ##### Install the patch and transform crossplane function
 
@@ -52,8 +49,6 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 ### SETUP
 
-To create two workspaces and install the custom crossplane apis (XRDs & compositions) we'll utilize NKPs project functionality on the Managment Cluster Workspace. All steps below are done in the NKP UI and or kubectl on the management cluster.
-
 #### Create the project
 
 - In the NKP UI, go to the management cluster workspace
@@ -65,8 +60,8 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 #### Create a Workspace for your workload clusters
 
 - In NKP UI, create a workspace
-    - **Name:** devtest
-    - **ID/Namespace:** devtest
+    - **Name:** workloads
+    - **ID/Namespace:** workloads
     - **Description:** workspace to create clusters
 - Once workspace is created, enable the following Applications
     - Foundational : Reloader, Traefik
