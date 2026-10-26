@@ -482,7 +482,7 @@ spec:
               - fromFieldPath: spec.crossplane.compositionRef.name
                 toFieldPath: spec.forProvider.manifest.metadata.labels.composition
           ### PROVIDERCONFIG
-          - name: app-reloader
+          - name: k8s-provider-cfg
             base:
               apiVersion: kubernetes.crossplane.io/v1alpha2
               kind: Object
