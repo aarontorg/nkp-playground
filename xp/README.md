@@ -62,22 +62,21 @@ To create two workspaces and install the custom crossplane apis (XRDs & composit
 - Give admin permission to xp-apis service account (hack)
     - `kubectl create clusterrolebinding xp-apis-admin --clusterrole=cluster-admin --serviceaccount=xp-apis:xp-apis`
 
-#### nkp-mgt Gitops Source
+#### Create a Workspace for your workload clusters
 
-The nkp-mgt gitops source will create workspaces and in the future projects.
-
-- Go to the project in NKP UI
-- If needed, create a secret for the nkp-playground git ops repo with username and password keys
-- Create a new GitOps source in the Project
-    - **Name:** nkp-mgt
-    - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    - **Branch:** main
-    - **Path:** ./xp/nkp-mgt
-    - **Primary Git Secret:** *Select one created for access*
-- To verify install of workspaces
-    `kubectl get workspaces -A` Should see devtest and production workspaces
+- In NKP UI, create a workspace
+    - **Name:** devtest
+    - **ID/Namespace:** devtest
+    - **Description:** workspace to create clusters
+- Once workspace is created, enable the following Applications
+    - Foundational : Reloader, Traefik
+    - Security: Gatekeeper, cert-manager
+    - Monitoring: Headlamp
+    - Anything else you want
 
 #### apis Gitops Source
+
+Create a gitops source to install the crossplane apis
 
 - Go to the project in NKP UI
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
@@ -91,9 +90,9 @@ The nkp-mgt gitops source will create workspaces and in the future projects.
     `kubectl get xrd` Should see workloadclusters.nkp.io 
     `kubectl get compositions` Should see devtest & production
 
-### Creating Clusters
+#### Creating Workload Clusters
 
-We can now create clusters with ClusterProfile api and two crossplane compositions we created. To do this, we'll utilize another gitops repo within the xp-apis project on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
+We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize a gitops repo within the xp-apis project on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
 
 In the nkp-playground repo
  **Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.**
@@ -108,6 +107,7 @@ In the nkp-playground repo
     - **Primary Git Secret:** *Select one created for access*
 - After 1-2 minutes a new cluster should start being created
     - `kubectl get clusters -A`
+    - Showcase the gatekeeper security policy that has been created on the workload cluster ... 
 
 #### Details on Setup
 
