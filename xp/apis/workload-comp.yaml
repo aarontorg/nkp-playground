@@ -582,11 +582,6 @@ spec:
             patches: 
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.providerConfigRef.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-providerconfig'
-                    type: string
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: metadata.name
                 transforms:
