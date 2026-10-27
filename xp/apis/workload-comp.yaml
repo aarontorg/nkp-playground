@@ -540,7 +540,7 @@ spec:
                     apiVersion: templates.gatekeeper.sh/v1
                     kind: ConstraintTemplate
                     metadata:
-                      name: patch
+                      name: k8sdisallowlatesttag
                       annotations:
                         description: >-
                           Requires container images to use an explicit, non-latest version tag.
@@ -582,12 +582,12 @@ spec:
             patches: 
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.providerConfigRef.name
-              - fromFieldPath: spec.workloadClusterName
-                toFieldPath: metadata.name
-                transforms:
-                  - string:
-                      type: Format
-                      fmt: '%s-dissallow-latest-template'
-                    type: string
+              # - fromFieldPath: spec.workloadClusterName
+              #   toFieldPath: metadata.name
+              #   transforms:
+              #     - string:
+              #         type: Format
+              #         fmt: '%s-dissallow-latest-template'
+              #       type: string
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
