@@ -589,3 +589,33 @@ spec:
                       type: Format
                       fmt: '%s-dissallow-latest-template'
                     type: string
+          - name: dissallow-latest-tag-constraint
+            base: 
+              apiVersion: kubernetes.crossplane.io/v1alpha2
+              kind: Object
+              spec:
+                providerConfigRef:
+                  name: patch
+                deletionPolicy: Delete
+                managementPolicies: ["*"]
+                forProvider:
+                  manifest:
+                    apiVersion: constraints.gatekeeper.sh/v1beta1
+                    kind: K8sDisallowLatestTag
+                    metadata:
+                      name: block-latest-image-tags
+                    spec:
+                      match:
+                        kinds:
+                          - apiGroups: [""]
+                            kinds: ["Pod"]
+            patches: 
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: spec.providerConfigRef.name
+              - fromFieldPath: spec.workloadClusterName
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-dissallow-latest-constraint'
+                    type: string
