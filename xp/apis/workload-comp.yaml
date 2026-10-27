@@ -335,72 +335,10 @@ spec:
                                         systemDiskSize: 80Gi
                                         vcpuSockets: 8
                                         vcpusPerSocket: 1
-                      #capiClusterRef:
-                      #  name: patch
-                      #  namespace: patch
-                      # kommanderCluster:
-                      #   labels:
-                      #     cluster.x-k8s.io/cluster-name: patch
-                      #     cluster.x-k8s.io/provider: nutanix
-                      #     composition: worklaod
-                      #     cost-center: mine
-                      #     data-classification: important
-                      #     infraId: global-nutanix-credentials
-                      #     owner: me
-                      #     topology.cluster.x-k8s.io/owned: ""
-                      #   spec:
-                      #     clusterRef:
-                      #       capiCluster:
-                      #         name: patch
-                      #         namespace: patch
-                      #     kubeconfigRef:
-                      #       name: patch #devtest-1-kubeconfig
-                      #     namespaceRef:
-                      #       name: patch #devtest1
-                      #     ociRegistry:
-                      #       certSecretRef:
-                      #         name: patch #devtest-1-oci-cert
-                      #       mirrorURL: https://cncf-distribution-registry-docker-registry.registry-system.svc.cluster.local:443 #Only will work for internal reg
-                      #     platform:
-                      #       version: patch #v2.18.0
-                      # kommanderClusterRef:
-                      #   name: patch #devtest-1
-                      #   namespace: patch #devtest1
-                      # version: patch #v2.18.0    
             patches:
               # NEW FOR 2.18
               - fromFieldPath: spec.nkpVersion
                 toFieldPath: spec.forProvider.manifest.spec.version
-              #- fromFieldPath: spec.workSpaceName
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderClusterRef.namespace
-              #- fromFieldPath: spec.workloadClusterName
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderClusterRef.name
-              #- fromFieldPath: spec.nkpVersion
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.platform.version
-             # - fromFieldPath: spec.workloadClusterName
-               # toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.ociRegistry.certSecretRef.name
-               # transforms:
-               #   - string:
-               #       type: Format
-               #       fmt: '%s-oci-cert'
-               #     type: string
-              #- fromFieldPath: spec.workSpaceName
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.namespaceRef.name
-              #- fromFieldPath: spec.workloadClusterName
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.kubeconfigRef.name
-              #  transforms:
-              #    - string:
-              #        type: Format
-              #        fmt: '%s-kubeconfig'
-              #      type: string
-              #- fromFieldPath: spec.workSpaceName
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.clusterRef.capiCluster.namespace
-              #- fromFieldPath: spec.workloadClusterName
-              #  toFieldPath: spec.forProvider.manifest.spec.kommanderCluster.spec.clusterRef.capiCluster.name
-              #- fromFieldPath: spec.workloadClusterName
-              #  toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.name
-              # - fromFieldPath: spec.workSpaceName
-              #  toFieldPath: spec.forProvider.manifest.spec.capiClusterRef.namespace
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.forProvider.manifest.metadata.name
               - fromFieldPath: spec.workSpaceName

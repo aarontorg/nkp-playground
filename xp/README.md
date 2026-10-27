@@ -107,9 +107,17 @@ In the nkp-playground repo
     - `kubectl get clusters -A` [new cluster should be in list]
     - `kubectl get providers.kubernetes` [new provider config with the clusters name]
     - Showcase the gatekeeper security policy that has been created on the workload cluster ... 
+        - `kubectl --kubeconfig ~/.kube/workload-1.conf get constrainttemplates`
+        - `kubectl --kubeconfig ~/.kube/workload-1.conf get k8sdisallowlatesttag`
 
 #### Details on Setup
 
-Within the repo there are two folders 0-deploy and 0-stagging. As mentioned, anything in the 0-deploy folder will be deployed. There are three examples included. The devtest clusters utilize the devtest composition and the production example uses production. They are essentially the same except for the amount of nodes and the applications installed. Devtest has less apps and fewer workers.
+Within the repo there are two folders 0-deploy and 0-stagging. As mentioned, anything in the 0-deploy folder will be deployed. There are two examples included.
 
-The idea is that we can create profiles for the types of clusters that we want. We can hard code any value and/or expose it to the user for customizations. One idea is to be able to update/upgrade things much easier.
+#### Why this is a strength of NKP
+
+- Deploy crossplane and all custom apis to management cluster (not all worklaod clusters)
+- Workload clusters do not need to store all API definitions or setup multiple GitOps projects
+- Create clusters with custom APIs utilizing crossplane compositions and CAPI APIs.
+- NKP will automatically deploy a working version of gatekeeper to all workload clusters
+- Automatically deploy policy or any other type of object as desired
