@@ -582,12 +582,10 @@ spec:
             patches: 
               - fromFieldPath: spec.workloadClusterName
                 toFieldPath: spec.providerConfigRef.name
-              # - fromFieldPath: spec.workloadClusterName
-              #   toFieldPath: metadata.name
-              #   transforms:
-              #     - string:
-              #         type: Format
-              #         fmt: '%s-dissallow-latest-template'
-              #       type: string
               - fromFieldPath: spec.workloadClusterName
-                toFieldPath: spec.forProvider.manifest.metadata.name
+                toFieldPath: metadata.name
+                transforms:
+                  - string:
+                      type: Format
+                      fmt: '%s-dissallow-latest-template'
+                    type: string
