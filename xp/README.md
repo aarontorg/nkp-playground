@@ -84,9 +84,9 @@ In NKP, Workspaces are utilized to configure clusters and enable application for
     - **Branch:** main
     - **Path:** ./xp/apis
     - **Primary Git Secret:** *Select one created for access*
-- To verify install of workspaces (* add projects)
+- To verify install of the Crossplane APIs
     - `kubectl get xrd` Should see workloadclusters.nkp.io 
-    - `kubectl get compositions` Should see devtest & production
+    - `kubectl get compositions` Should see workload
 
 #### Creating Workload Clusters
 
@@ -109,6 +109,11 @@ In the nkp-playground repo
     - Showcase the gatekeeper security policy that has been created on the workload cluster ... 
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get constrainttemplates`
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get k8sdisallowlatesttag`
+    - Try to run a pod on the new workload cluster with the latest tag
+        - Look at policies/test/nginx-pod.yaml and make sure the correct image is being used, initially we want to use the one with the latest tag
+        - Run the pod `kubectl apply -f policies/test/nginx-pod.yaml` It should fail a policy error.
+        - Modify policies/test/nginx-pod.yaml to use the non-latest tag image.
+        - Run the pod `kubectl apply -f policies/test/nginx-pod.yaml` It should be scheduled and started in the default namespace.
 
 #### Details on Setup
 

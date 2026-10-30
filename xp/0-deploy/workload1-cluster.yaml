@@ -10,14 +10,14 @@ spec:
   workSpaceName: workloads
   nkpVersion: v2.19.0 # update when needed
   pc:
-    key: 'nx2Tech846!' #MODIFY_THIS
-    ipAddress: 10.38.46.7 #MODIFY_THIS
-    clusterName: PHX-POC274 #MODIFY_THIS
-    subnetName: secondary-PHX-POC274 #MODIFY_THIS
+    key: 'nx2Tech457!' #MODIFY_THIS
+    ipAddress: 10.38.193.7 #MODIFY_THIS
+    clusterName: PHX-POC193 #MODIFY_THIS
+    subnetName: secondary-PHX-POC193 #MODIFY_THIS
   loadBalancer:
-    start: 10.38.46.139 #MODIFY_THIS
-    end: 10.38.46.141 #MODIFY_THIS
-    vip: 10.38.46.138 #MODIFY_THIS
+    start: 10.38.193.139 #MODIFY_THIS
+    end: 10.38.193.141 #MODIFY_THIS
+    vip: 10.38.193.138 #MODIFY_THIS
   nkpImageName: nkp-ubuntu-24.04-release-cis-1.36.2-20261014170313.qcow2 #MODIFY_THIS
   k8sVersion: v1.36.2 #MODIFY_THIS
-  pubKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP3Q5x6wy4XMcek/CKvHDMHsBw0y3cxDWh5J/5lqyLo8 nutanix@ubuntu" #MODIFY_THIS
+  pubKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDUbG4COZD7QZY/ldKyOR9kIQsWRQScLd+I41cs2sHYj nutanix@ubuntu" #MODIFY_THIS
