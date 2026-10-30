@@ -85,8 +85,8 @@ In NKP, Workspaces are utilized to configure clusters and enable application for
     - **Path:** ./xp/apis
     - **Primary Git Secret:** *Select one created for access*
 - To verify install of workspaces (* add projects)
-    `kubectl get xrd` Should see workloadclusters.nkp.io 
-    `kubectl get compositions` Should see devtest & production
+    - `kubectl get xrd` Should see workloadclusters.nkp.io 
+    - `kubectl get compositions` Should see devtest & production
 
 #### Creating Workload Clusters
 
