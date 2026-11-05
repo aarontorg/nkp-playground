@@ -104,7 +104,7 @@ In the nkp-playground repo
     - **Path:** ./xp/0-deploy
     - **Primary Git Secret:** *Select one created for access*
 - After 1-2 minutes a new cluster should start being created if you have a cluster in 0-deploy folder
-    - `kubectl get clusters -A` [new cluster should be in list]
+    - `kubectl get nkpclusters -A` [new cluster should be in list]
     - `kubectl get providers.kubernetes` [new provider config with the clusters name]
     - Showcase the gatekeeper security policy that has been created on the workload cluster ... 
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get constrainttemplates`
