@@ -7,7 +7,7 @@ spec:
     compositionRef:
       name: workload
   workloadClusterName: workload-2 # Change name if you want
-  workSpaceName: workloads2
+  workSpaceName: workloads-2
   nkpVersion: v2.19.0 # update when needed
   pc:
     key: 'nx2Tech604!' #MODIFY_THIS

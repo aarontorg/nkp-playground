@@ -62,11 +62,16 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 In NKP, Workspaces are utilized to configure clusters and enable application for every cluster created within the workspace
 
-- In NKP UI, create a new workspace
-    - **Name:** workloads
+- In NKP UI, create two new workspaces
+    - **Name:** workloads-1
     - **ID/Namespace:** workloads
     - **Description:** workspace to create clusters
-- Once workspace is created, verify the following Applications are enabled.
+
+    - **Name:** workloads-2
+    - **ID/Namespace:** workloads
+    - **Description:** workspace to create clusters
+
+- Once the workspaces are created, verify the following Applications are enabled.
     - Foundational : Reloader, Traefik
     - Security: Gatekeeper, cert-manager
     - Monitoring: Headlamp

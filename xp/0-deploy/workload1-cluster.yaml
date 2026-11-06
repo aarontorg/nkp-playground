@@ -7,17 +7,17 @@ spec:
     compositionRef:
       name: workload
   workloadClusterName: workload-1 # Change name if you want
-  workSpaceName: workloads
+  workSpaceName: workloads-1
   nkpVersion: v2.19.0 # update when needed
   pc:
     key: 'nx2Tech604!' #MODIFY_THIS
-    ipAddress: 10.8.26.7 #MODIFY_THIS
-    clusterName: RNO-SPOC001-3 #MODIFY_THIS
-    subnetName: secondary-RNO-SPOC001-3 #MODIFY_THIS
+    ipAddress: 10.8.12.7 #MODIFY_THIS
+    clusterName: RNO-POC001 #MODIFY_THIS
+    subnetName: secondary-RNO-POC001 #MODIFY_THIS
   loadBalancer:
-    start: 10.8.26.139 #MODIFY_THIS
-    end: 10.8.26.141 #MODIFY_THIS
-    vip: 10.8.26.138 #MODIFY_THIS
+    start: 10.8.12.139 #MODIFY_THIS
+    end: 10.8.12.141 #MODIFY_THIS
+    vip: 10.8.12.138 #MODIFY_THIS
   nkpImageName: nkp-ubuntu-24.04-release-cis-1.36.2-20261014170313.qcow2 #MODIFY_THIS
   k8sVersion: v1.36.2 #MODIFY_THIS
-  pubKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEf1yAWFeb1jOZSLV3bC9dywMNIhPTq5wC4Fge0endmP nutanix@ubuntu" #MODIFY_THIS
+  pubKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH7gKH2JATerZ5ZzAqnIctevlZ9BXjPjxXu2th0D1R3d nutanix@ubuntu" #MODIFY_THIS
