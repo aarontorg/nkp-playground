@@ -1,0 +1,5 @@
+---
+http_proxy: "http://10.8.83.239:8888"
+https_proxy: "http://10.8.83.239:8888"
+no_proxy: "localhost,127.0.0.1,10.8.83.239"
+
