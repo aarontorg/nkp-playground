@@ -40,7 +40,6 @@ spec:
             apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
             kind: Workspace
             metadata:
-              name: {{ $wsName }}
               annotations:
                 gotemplating.fn.crossplane.io/composition-resource-name: workspace
                 workspaces.kommander.mesosphere.io/display-name: {{ $xr.spec.displayName | quote }}
