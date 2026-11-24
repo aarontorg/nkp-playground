@@ -26,6 +26,7 @@ metadata:
 spec:
   namespaceName: workspace-1
 ---
+apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
 kind: Workspace
 metadata:
   annotations:
