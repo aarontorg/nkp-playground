@@ -77,9 +77,10 @@ When the management gitops source is create it will do the following:
     - **Path:** ./xp/management
     - **Primary Git Secret:** nkp-playground
 - To verify install of the Crossplane APIs
-    - `kubectl get workspaces` (Should see workspace-0, workspace-1, workspace-2 ... also seen in the UI)
-    - `kubectl get xrd` (Should see workloadclusters.nkp.io) 
-    - `kubectl get compositions` Should see workload
+    - `kubectl get workspaces` (workspace-0, workspace-1, workspace-2)
+    - `kubectl get gitopsrepositories -n nkp-playground` (management,xp-apis, workload-clusters and few other default ones )
+    - `kubectl get xrd` (workloadclusters.nkp.io) 
+    - `kubectl get compositions` (workload)
 
 #### Creating Workload Clusters
 
