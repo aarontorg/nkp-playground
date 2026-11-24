@@ -77,18 +77,19 @@ When the management gitops source is created it will do the following:
 
 - In the NKP-UI, Go to the Management Cluster Workspace.
 - Go to Projects and select the nkp-playground project
+- Go to the secrets tab and Create a secret named **nkp-playgound** for the nkp-playground project repo with username and password keys
 - Go to the Continuous Deployment (CD) tab
 - Add a new GitOps source in the Project
     - **Name:** management
     - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    - **Branch:** [your branch name]
+    - **Branch:** main
     - **Path:** ./xp/management
     - **Primary Git Secret:** nkp-playground
 - To verify install of the Crossplane APIs
-    - `kubectl get workspaces` (workspace-0, workspace-1, workspace-2)
-    - `kubectl get gitopsrepositories -n nkp-playground` (management,xp-apis, workload-clusters and few other default ones )
-    - `kubectl get xrd` (workloadclusters.nkp.io) 
-    - `kubectl get compositions` (workload)
+    - `kubectl get gitopsrepositories,xrd,compositions -n nkp-playground` 
+        - GitOpsRepositories: management,apis, workload-clusters 
+        - XRD: workloadclusters.nkp.io
+        - Compositions: workload
 
 #### Creating Workload Clusters
 
