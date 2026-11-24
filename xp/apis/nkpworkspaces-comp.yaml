@@ -17,6 +17,15 @@ spec:
         source: Inline
         inline:
           template: |
+            apiVersion: meta.gotemplating.fn.crossplane.io/v1alpha1
+            kind: ExtraResources
+            requirements:
+              appVersions:
+                apiVersion: v1
+                kind: ConfigMap
+                matchName: nkp-default-app-versions
+                namespace: kommander
+            ---
             {{- $xr := .observed.composite.resource }}
             {{- $wsName := $xr.metadata.name }}
             {{- $wsNs := $xr.spec.namespaceName }}
