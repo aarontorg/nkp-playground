@@ -3,7 +3,7 @@ kind: CompositeResourceDefinition
 metadata:
   name: workloadclusters.nkp.io
 spec:
-  scope: Namespaces
+  scope: Namespaced
   group: nkp.io
   names:
     kind: WorkloadCluster
