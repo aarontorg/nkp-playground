@@ -4,7 +4,7 @@ metadata:
   name: nkpworkspaces.nkp.io
 spec:
   scope: Namespaced
-  group: platform.nkp.io
+  group: nkp.io
   names:
     kind: NKPWorkspace
     plural: nkpworkspaces
