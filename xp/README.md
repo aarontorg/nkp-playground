@@ -16,6 +16,7 @@ they become a very powerful combination to deliver the quintessential cloud nati
 - Create a branch and switch to it
 - In the file xp/management/workspaces.yaml search for **main** and change all occurences to your branch name.
 - If there are any files in xp/workload-clusters/deploy move them to xp/workload-clusters/stagging.
+- Add, commit and push your changes to your branch
 
 ## Management Cluster
 
@@ -64,7 +65,7 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 #### Create management Gitops Source
 
-When the management gitops source is create it will do the following:
+When the management gitops source is created it will do the following:
 1. Create three workspaces (workspace-0, workspace-1, workspace-2)
 2. Create a GitOps source in the nkp-playground project called xp-apis. This will load the crossplane api and compositions.
 3. Create a GipOps source in the nkp-playground project called workload-clusters. This will be used to create workload clusters.
@@ -87,23 +88,19 @@ When the management gitops source is create it will do the following:
 
 #### Creating Workload Clusters
 
-We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize a gitops repo within the nkp-playground project we created on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
+We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize the gitops repo called workload-clusters within the nkp-playground project we created on the management cluster.
 
-In the nkp-playground repo
- **Check the folder xp/workload-clusters/deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.**
- **For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search for #MODIFY_THIS.
+Do the following to create a workload cluster
+1. Modify **xp/workload-clusters/stage/workload1-cluster.yaml**. Look for #MODIFY_THIS and make changes to fit your environment.
+2. Move **xp/workload-clusters/stage/workload1-cluster.yaml** to **xp/workload-clusters/deploy/workload1-cluster.yaml**
 
-- In the NKP UI, go to the management cluster workspace and go in to the xp-apis project
-- Create a new GitOps source
-    - **Name:** workload-clusters
-    - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    - **Branch:** main
-    - **Path:** ./xp/0-deploy
-    - **Primary Git Secret:** *Select one created for access*
-- After 1-2 minutes a new cluster should start being created if you have a cluster in 0-deploy folder
+- After 1-2 minutes a new cluster should start creating
     - `kubectl get nkpclusters -A` [new cluster should be in list]
     - `kubectl get providers.kubernetes` [new provider config with the clusters name]
-    - Showcase the gatekeeper security policy that has been created on the workload cluster ... 
+    - Showcase the gatekeeper security policy that has been created on the workload cluster ...
+        - Generate a kubeconfig for the new workload cluster:
+            `nkp get kubeconfig --cluster-name ws-1-workload-1 -n workspace-1 > ~/ws-1-workload-1.conf
+        - export KUBECONFIG=~/ws-1-workload-1.conf
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get constrainttemplates`
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get k8sdisallowlatesttag`
     - Try to run a pod on the new workload cluster with the latest tag

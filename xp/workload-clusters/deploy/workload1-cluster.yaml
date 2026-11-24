@@ -1,0 +1,23 @@
+apiVersion: nkp.io/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: ws-1-workload-1
+spec:
+  crossplane:
+    compositionRef:
+      name: workload
+  workloadClusterName: ws-1-workload-1 # Change name if you want
+  workSpaceName: workspace-1
+  nkpVersion: v2.19.1 # update when needed
+  pc:
+    key: 'nx2Tech258!' #MODIFY_THIS
+    ipAddress: 10.38.4.7 #MODIFY_THIS
+    clusterName: RNO-SPOC012-2 #MODIFY_THIS
+    subnetName: secondary-RNO-SPOC012-2 #MODIFY_THIS
+  loadBalancer:
+    start: 10.38.4.141 #MODIFY_THIS
+    end: 10.38.4.149 #MODIFY_THIS
+    vip: 10.38.4.140 #MODIFY_THIS
+  nkpImageName: nkp-ubuntu-24.04-release-cis-1.36.2-20261026153223.qcow2 #MODIFY_THIS
+  k8sVersion: v1.36.2 #MODIFY_THIS
+  pubKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMedCnrlO8BGD4g+Jj5+uPZuVjKnVj05J4mHRvJraUk nutanix@ubuntu" #MODIFY_THIS
