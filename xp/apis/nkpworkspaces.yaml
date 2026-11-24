@@ -1,7 +1,7 @@
 apiVersion: apiextensions.crossplane.io/v2
 kind: CompositeResourceDefinition
 metadata:
-  name: nkpworkspaces.platform.nkp.io
+  name: nkpworkspaces.nkp.io
 spec:
   scope: Namespaced
   group: platform.nkp.io
