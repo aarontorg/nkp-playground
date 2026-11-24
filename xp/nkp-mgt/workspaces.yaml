@@ -3,11 +3,56 @@ kind: Workspace
 metadata:
   annotations:
     kommander.mesosphere.io/description: ""
-    kommander.mesosphere.io/display-name: devtest1
+    kommander.mesosphere.io/display-name: workspace-0
     workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
   labels:
     caren.nutanix.com/namespace-sync: ""
-    workspaces.kommander.mesosphere.io/workspace-name: devtest1
-  name: devtest1
+    workspaces.kommander.mesosphere.io/workspace-name: workspace-0
+  name: workspace-0
 spec:
-  namespaceName: devtest1
+  namespaceName: workspace-0
+  ---
+  apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+kind: Workspace
+metadata:
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: workspace-1
+    workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
+  labels:
+    caren.nutanix.com/namespace-sync: ""
+    workspaces.kommander.mesosphere.io/workspace-name: workspace-1
+  name: workspace-1
+spec:
+  namespaceName: workspace-1
+---
+kind: Workspace
+metadata:
+  annotations:
+    kommander.mesosphere.io/description: ""
+    kommander.mesosphere.io/display-name: workspace-2
+    workspace.kommander.mesosphere.io/default-app-deployments-created: "true"
+  labels:
+    caren.nutanix.com/namespace-sync: ""
+    workspaces.kommander.mesosphere.io/workspace-name: workspace-2
+  name: workspace-2
+spec:
+  namespaceName: workspace-2
+---
+metadata:
+  annotations:
+    kommander.mesosphere.io/description: "Project for Crossplane apis and config"
+    kommander.mesosphere.io/display-name: xp-apis
+  finalizers:
+  - kommander.mesosphere.io/projectkustomization
+  - workspaces.kommander.mesosphere.io/project
+  generation: 1
+  name: xp-apis
+  namespace: kommander
+spec:
+  namespaceName: xp-apis
+  placement:
+    clusters:
+    - name: nkp
+  workspaceRef:
+    name: kommander-workspace
