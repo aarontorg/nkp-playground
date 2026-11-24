@@ -3,7 +3,7 @@ kind: CompositeResourceDefinition
 metadata:
   name: nkpworkspaces.nkp.io
 spec:
-  scope: Namespaced
+  scope: Cluster
   group: nkp.io
   names:
     kind: NKPWorkspace
