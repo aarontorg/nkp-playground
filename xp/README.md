@@ -13,7 +13,7 @@ they become a very powerful combination to deliver the quintessential cloud nati
 - Install NKP
 - Clone this git repo: 
     `git clone https://github.com/aarontorg/nkp-playground.git` **Request permission if needed**
-- Create a branch and switch to it
+- Create a branch and switch to it `git checkout -b <branch-name>`
 - In the file xp/management/workspaces.yaml search for **main** and change all occurences to your branch name.
 - If there are any files in xp/workload-clusters/deploy move them to xp/workload-clusters/stagging.
 - Add, commit and push your changes to your branch

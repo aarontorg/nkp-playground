@@ -12,8 +12,8 @@ spec:
   pc:
     key: 'nx2Tech258!' #MODIFY_THIS
     ipAddress: 10.38.4.7 #MODIFY_THIS
-    clusterName: RNO-SPOC012-2 #MODIFY_THIS
-    subnetName: secondary-RNO-SPOC012-2 #MODIFY_THIS
+    clusterName: PHX-SPOC001-4 #MODIFY_THIS
+    subnetName: secondary-PHX-SPOC001-4 #MODIFY_THIS
   loadBalancer:
     start: 10.38.4.141 #MODIFY_THIS
     end: 10.38.4.149 #MODIFY_THIS
