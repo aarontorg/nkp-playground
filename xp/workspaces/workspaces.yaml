@@ -1,4 +1,4 @@
-apiVersion: platform.nkp.io/v1alpha1
+apiVersion: nkp.io/v1alpha1
 kind: NKPWorkspace
 metadata:
   name: workspace-0
