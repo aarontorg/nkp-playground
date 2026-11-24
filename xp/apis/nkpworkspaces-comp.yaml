@@ -17,6 +17,14 @@ spec:
         source: Inline
         inline:
           template: |
+            ---
+            apiVersion: v1
+            kind: Namespace
+            metadata:
+              name: {{ $wsNs }}
+              annotations:
+                gotemplating.fn.crossplane.io/composition-resource-name: namespace
+            ---
             apiVersion: meta.gotemplating.fn.crossplane.io/v1alpha1
             kind: ExtraResources
             requirements:
