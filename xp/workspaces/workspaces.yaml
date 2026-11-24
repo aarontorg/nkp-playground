@@ -1,0 +1,26 @@
+apiVersion: platform.nkp.io/v1alpha1
+kind: NKPWorkspace
+metadata:
+  name: workspace-0
+  namespace: default
+spec:
+  displayName: "workspace-0"
+  namespaceName: "workspace-0"
+# ---
+# apiVersion: platform.nkp.io/v1alpha1
+# kind: NKPWorkspace
+# metadata:
+#   name: team-alpha
+#   namespace: default
+# spec:
+#   displayName: "Team Alpha"
+#   namespaceName: team-alpha-ns
+# ---
+# apiVersion: platform.nkp.io/v1alpha1
+# kind: NKPWorkspace
+# metadata:
+#   name: team-alpha
+#   namespace: default
+# spec:
+#   displayName: "Team Alpha"
+#   namespaceName: team-alpha-ns

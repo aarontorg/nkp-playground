@@ -65,6 +65,8 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 #### Create management Gitops Source
 
+`kubectl create configmap nkp-default-app-versions -n kommander $(kubectl get clusterapps -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | awk -F'-[0-9]' 'NF>1 {print "--from-literal=" $1 "=" $0}') --dry-run=client -o yaml | kubectl apply -f -`
+
 When the management gitops source is created it will do the following:
 1. Create three workspaces (workspace-0, workspace-1, workspace-2)
 2. Create a GitOps source in the nkp-playground project called xp-apis. This will load the crossplane api and compositions.
