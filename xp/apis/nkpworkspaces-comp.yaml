@@ -17,6 +17,9 @@ spec:
         source: Inline
         inline:
           template: |
+            {{- $xr := .observed.composite.resource }}
+            {{- $wsName := $xr.metadata.name }}
+            {{- $wsNs := $xr.spec.namespaceName }}
             ---
             apiVersion: v1
             kind: Namespace
@@ -33,10 +36,6 @@ spec:
                 kind: ConfigMap
                 matchName: nkp-default-app-versions
                 namespace: kommander
-            ---
-            {{- $xr := .observed.composite.resource }}
-            {{- $wsName := $xr.metadata.name }}
-            {{- $wsNs := $xr.spec.namespaceName }}
             ---
             apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
             kind: Workspace
