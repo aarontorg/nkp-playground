@@ -1,0 +1,81 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: nkp-workspace-with-defaults
+spec:
+  compositeTypeRef:
+    apiVersion: nkp.io/v1alpha1
+    kind: NKPWorkspace
+  mode: Pipeline
+  pipeline:
+    - step: render-workspace-and-apps
+      functionRef:
+        name: function-go-templating
+      input:
+        apiVersion: gotemplating.fn.crossplane.io/v1beta1
+        kind: GoTemplate
+        source: Inline
+        inline:
+          template: |
+            {{- $xr := .observed.composite.resource }}
+            {{- $wsName := $xr.metadata.name }}
+            {{- $wsNs := $xr.spec.namespaceName }}
+            ---
+            apiVersion: workspaces.kommander.mesosphere.io/v1alpha1
+            kind: Workspace
+            metadata:
+              name: {{ $wsName }}
+              annotations:
+                gotemplating.fn.crossplane.io/composition-resource-name: workspace
+                workspaces.kommander.mesosphere.io/display-name: {{ $xr.spec.displayName | quote }}
+            spec:
+              namespaceName: {{ $wsNs }}
+
+            {{- $versionMap := dict }}
+            {{- if and .extraResources .extraResources.appVersions }}
+              {{- $cm := index .extraResources.appVersions 0 }}
+              {{- $versionMap = $cm.resource.data }}
+            {{- end }}
+
+            {{- $defaultApps := list
+              "reloader"
+              "traefik"
+              "cert-manager"
+              "gatekeeper"
+              "fluent-bit"
+              "kube-prometheus-stack"
+              "velero"
+              "prometheus-adapter"
+              "grafana-logging"
+              "grafana-loki"
+              "kommander-flux"
+              "dex"
+            }}
+
+            {{- range $app := $defaultApps }}
+            {{- $clusterAppName := index $versionMap $app }}
+            {{- if $clusterAppName }}
+            ---
+            apiVersion: apps.kommander.d2iq.io/v1alpha3
+            kind: AppDeployment
+            metadata:
+              name: {{ $app }}
+              namespace: {{ $wsNs }}
+              annotations:
+                gotemplating.fn.crossplane.io/composition-resource-name: app-{{ $app }}
+            spec:
+              appRef:
+                kind: ClusterApp
+                name: {{ $clusterAppName }}
+            {{- end }}
+            {{- end }}
+        extraResources:
+          - kind: ConfigMap
+            apiVersion: v1
+            into: appVersions
+            selector:
+              matchName: nkp-default-app-versions
+              namespace: kommander
+    - step: auto-ready
+      functionRef:
+        name: function-auto-ready

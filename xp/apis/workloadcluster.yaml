@@ -3,11 +3,11 @@ kind: CompositeResourceDefinition
 metadata:
   name: workloadclusters.nkp.io
 spec:
-  scope: Cluster
+  scope: Namespaced
   group: nkp.io
   names:
-    kind: WorkloadCluster #Rename this after current res
-    plural: workloadclusters # Rename
+    kind: WorkloadCluster
+    plural: workloadclusters
   versions:
     - name: v1alpha1
       served: true
