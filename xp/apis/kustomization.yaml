@@ -3,3 +3,5 @@ kind: Kustomization
 resources:
   - workloadcluster.yaml
   - workload-comp.yaml
+  - nkpworkspaces-comp.yaml
+  - nkpworkspaces.yaml
