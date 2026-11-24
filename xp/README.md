@@ -55,24 +55,29 @@ Ensure you are in the home directory of the nkp-playground git repo
 - In the NKP UI, go to the Management Cluster Workspace
 - Create a new project named **nkp-playground** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
-- Add a secret to the project for github with username and password as the keys
+- Add a secret in the nkp-playground project called nkp-playground for github with username and password as the keys
 - Give admin permission to management service account (hack)
     - `kubectl create clusterrolebinding nkp-playground-admin --clusterrole=cluster-admin --serviceaccount=nkp-playground:nkp-playground`
 
 #### Create management Gitops Source
 
+When the management gitops source is create it will do the following:
+1. Create three workspaces (workspace-0, workspace-1, workspace-2)
+2. Create a GitOps source in the nkp-playground project called xp-apis. This will load the crossplane api and compositions.
+3. Create a GipOps source in the nkp-playground project called workload-clusters. This will be used to create workload clusters.
+
 - In the NKP-UI, Go to the Management Cluster Workspace.
 - Go to Projects and select the nkp-playground project
-- If needed, create a secret for the nkp-playground git ops repo with username and password keys
+- Create a secret named **nkp-playgound** for the nkp-playground project repo with username and password keys
 - Go to the Continuous Deployment (CD) tab
 - Add a new GitOps source in the Project
     - **Name:** management
     - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
     - **Branch:** main
     - **Path:** ./xp/management
-    - **Primary Git Secret:** *Select one created for access*
+    - **Primary Git Secret:** nkp-playground
 - To verify install of the Crossplane APIs
-    - `kubectl get workspaces` (Should see workspace-0, workspace-1, workspace-2)
+    - `kubectl get workspaces` (Should see workspace-0, workspace-1, workspace-2 ... also seen in the UI)
     - `kubectl get xrd` (Should see workloadclusters.nkp.io) 
     - `kubectl get compositions` Should see workload
 

@@ -73,9 +73,9 @@ kind: GitopsRepository
 kustomization:
   force: false
   interval: 6h0m0s
-  path: ./xp/apis
+  path: ./xp/0-deploy
   prune: true
   targetNamespace: nkp-playground
 metadata:
-  name: xp-apis
+  name: workload-clusters
   namespace: nkp-playground
