@@ -39,3 +39,22 @@ metadata:
 spec:
   namespaceName: workspace-2
 ---
+apiVersion: dispatch.d2iq.io/v1alpha3
+gitRepository:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: aarontorg
+  timeout: 1m0s
+  url: https://github.com/aarontorg/nkp-playground.git
+kind: GitopsRepository
+kustomization:
+  force: false
+  interval: 6h0m0s
+  path: ./xp/apis
+  prune: true
+  targetNamespace: nkp-playground
+metadata:
+  name: management
+  namespace: nkp-playground

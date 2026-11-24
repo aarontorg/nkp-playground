@@ -53,45 +53,27 @@ Ensure you are in the home directory of the nkp-playground git repo
 #### Create a project for setup of workspaces and project
 
 - In the NKP UI, go to the Management Cluster Workspace
-- Create a new project named **management** (Use the same name for ID/Namespace)
+- Create a new project named **nkp-playground** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
 - Add a secret to the project for github with username and password as the keys
 - Give admin permission to management service account (hack)
-    - `kubectl create clusterrolebinding xp-management-admin --clusterrole=cluster-admin --serviceaccount=management:management`
+    - `kubectl create clusterrolebinding nkp-playground-admin --clusterrole=cluster-admin --serviceaccount=nkp-playground:nkp-playground`
 
-#### Create a Workspace for your workload clusters
-
-In NKP, Workspaces are utilized to configure clusters and enable application for every cluster created within the workspace
-
-- In NKP UI, create two new workspaces
-    - **Name:** workloads-1
-    - **ID/Namespace:** workloads
-    - **Description:** workspace to create clusters
-
-    - **Name:** workloads-2
-    - **ID/Namespace:** workloads
-    - **Description:** workspace to create clusters
-
-- Once the workspaces are created, verify the following Applications are enabled.
-    - Foundational : Reloader, Traefik
-    - Security: Gatekeeper, cert-manager
-    - Monitoring: Headlamp
-    - Anything else you want
-
-#### apis Gitops Source
+#### Create management Gitops Source
 
 - In the NKP-UI, Go to the Management Cluster Workspace.
-- Go to Projects and select the xp-apis project
+- Go to Projects and select the nkp-playground project
 - If needed, create a secret for the nkp-playground git ops repo with username and password keys
 - Go to the Continuous Deployment (CD) tab
 - Add a new GitOps source in the Project
-    - **Name:** apis
+    - **Name:** management
     - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
     - **Branch:** main
-    - **Path:** ./xp/apis
+    - **Path:** ./xp/management
     - **Primary Git Secret:** *Select one created for access*
 - To verify install of the Crossplane APIs
-    - `kubectl get xrd` Should see workloadclusters.nkp.io 
+    - `kubectl get workspaces` (Should see workspace-0, workspace-1, workspace-2)
+    - `kubectl get xrd` (Should see workloadclusters.nkp.io) 
     - `kubectl get compositions` Should see workload
 
 #### Creating Workload Clusters
