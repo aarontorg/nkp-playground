@@ -1,0 +1,39 @@
+apiVersion: dispatch.d2iq.io/v1alpha3
+gitRepository:
+  interval: 1m0s
+  ref:
+    branch: main #Modify to your branch
+  secretRef:
+    name: nkp-playground
+  timeout: 1m0s
+  url: https://github.com/aarontorg/nkp-playground.git
+kind: GitopsRepository
+kustomization:
+  force: false
+  interval: 6h0m0s
+  path: ./xp/apis
+  prune: true
+  targetNamespace: nkp-playground
+metadata:
+  name: apis
+  namespace: nkp-playground
+---
+apiVersion: dispatch.d2iq.io/v1alpha3
+gitRepository:
+  interval: 1m0s
+  ref:
+    branch: main #Modify to your branch
+  secretRef:
+    name: nkp-playground
+  timeout: 1m0s
+  url: https://github.com/aarontorg/nkp-playground.git
+kind: GitopsRepository
+kustomization:
+  force: false
+  interval: 6h0m0s
+  path: ./xp/workload-clusters/deploy
+  prune: true
+  targetNamespace: nkp-playground
+metadata:
+  name: workload-clusters
+  namespace: nkp-playground

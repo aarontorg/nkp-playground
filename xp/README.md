@@ -11,10 +11,10 @@ they become a very powerful combination to deliver the quintessential cloud nati
 ## Pre-Req/Setup
 
 - Install NKP
+- Have nkp cli available where script will run
 - Clone this git repo: 
     `git clone https://github.com/aarontorg/nkp-playground.git` **Request permission if needed**
 - Create a branch and switch to it `git checkout -b <branch-name>`
-- In the file xp/management/workspaces.yaml search for **main** and change all occurences to your branch name.
 - If there are any files in xp/workload-clusters/deploy move them to xp/workload-clusters/stagging.
 - Add, commit and push your changes to your branch
 
@@ -46,7 +46,7 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 - `kubectl apply -f ./xp/config/function.yaml`
 
-##### Give xp-k8s service accounts cluster-admin permissions (hack)
+##### Give crossplane service accounts cluster-admin permissions (hack)
 
 - `export K8sSA=$(kubectl get sa -n crossplane-system | grep kubernetes | awk '{print $1}')`
 - `echo $K8sSA` [should be crossplane-contrib-provider-kubernetes-xxxxxxxxxx]
@@ -59,27 +59,29 @@ Ensure you are in the home directory of the nkp-playground git repo
 - In the NKP UI, go to the Management Cluster Workspace
 - Create a new project named **nkp-playground** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
-- Add a secret in the nkp-playground project called nkp-playground for github with username and password as the keys
 - Give admin permission to management service account (hack)
     - `kubectl create clusterrolebinding nkp-playground-admin --clusterrole=cluster-admin --serviceaccount=nkp-playground:nkp-playground`
 
+#### Create workspaces via command line
+
+The command below will run a script to create workspace-0, workspace-1, and workspace-2. You can create these in the UI if you prefer.
+
+- `./xp/misc/create-workspaces.sh`
+
+
 #### Create management Gitops Source
 
-`kubectl create configmap nkp-default-app-versions -n kommander $(kubectl get clusterapps -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' | awk -F'-[0-9]' 'NF>1 {print "--from-literal=" $1 "=" $0}') --dry-run=client -o yaml | kubectl apply -f -`
-
 When the management gitops source is created it will do the following:
-1. Create three workspaces (workspace-0, workspace-1, workspace-2)
-2. Create a GitOps source in the nkp-playground project called xp-apis. This will load the crossplane api and compositions.
-3. Create a GipOps source in the nkp-playground project called workload-clusters. This will be used to create workload clusters.
+1. Create a GitOps source in the nkp-playground project called apis. This will load the crossplane api and compositions.
+2. Create a GipOps source in the nkp-playground project called workload-clusters. This will be used to create workload clusters.
 
 - In the NKP-UI, Go to the Management Cluster Workspace.
 - Go to Projects and select the nkp-playground project
-- Create a secret named **nkp-playgound** for the nkp-playground project repo with username and password keys
 - Go to the Continuous Deployment (CD) tab
 - Add a new GitOps source in the Project
     - **Name:** management
     - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    - **Branch:** main
+    - **Branch:** [your branch name]
     - **Path:** ./xp/management
     - **Primary Git Secret:** nkp-playground
 - To verify install of the Crossplane APIs
