@@ -1,0 +1,28 @@
+apiVersion: apiextensions.crossplane.io/v2
+kind: CompositeResourceDefinition
+metadata:
+  name: nkpworkspaces.platform.nkp.io
+spec:
+  scope: Namespaced
+  group: platform.nkp.io
+  names:
+    kind: NKPWorkspace
+    plural: nkpworkspaces
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              required:
+                - displayName
+                - namespaceName
+              properties:
+                displayName:
+                  type: string
+                namespaceName:
+                  type: string
