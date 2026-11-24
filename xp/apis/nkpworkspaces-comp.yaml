@@ -78,13 +78,6 @@ spec:
                 name: {{ $clusterAppName }}
             {{- end }}
             {{- end }}
-        extraResources:
-          - kind: ConfigMap
-            apiVersion: v1
-            into: appVersions
-            selector:
-              matchName: nkp-default-app-versions
-              namespace: kommander
     - step: auto-ready
       functionRef:
         name: function-auto-ready
