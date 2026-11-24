@@ -56,5 +56,5 @@ kustomization:
   prune: true
   targetNamespace: nkp-playground
 metadata:
-  name: management
+  name: xp-apis
   namespace: nkp-playground
