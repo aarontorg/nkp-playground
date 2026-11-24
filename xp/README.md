@@ -13,6 +13,9 @@ they become a very powerful combination to deliver the quintessential cloud nati
 - Install NKP
 - Clone this git repo: 
     `git clone https://github.com/aarontorg/nkp-playground.git` **Request permission if needed**
+- Create a branch and switch to it
+- In the file xp/management/workspaces.yaml search for **main** and change all occurences to your branch name.
+- If there are any files in xp/workload-clusters/deploy move them to xp/workload-clusters/stagging.
 
 ## Management Cluster
 
@@ -50,7 +53,7 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 ### SETUP
 
-#### Create a project for setup of workspaces and project
+#### Create a project in NKP
 
 - In the NKP UI, go to the Management Cluster Workspace
 - Create a new project named **nkp-playground** (Use the same name for ID/Namespace)
@@ -84,10 +87,10 @@ When the management gitops source is create it will do the following:
 
 #### Creating Workload Clusters
 
-We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize a gitops repo within the xp-apis project on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
+We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize a gitops repo within the nkp-playground project we created on the management cluster. As before, we will utilize the NKP UI and kubectl on the management cluster.
 
 In the nkp-playground repo
- **Check the folder xp/0-deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.**
+ **Check the folder xp/workload-clusters/deploy before proceeding. Anything in this folder will be deployed. **If you do not want it to be deployed**, move it to the 0-stagging folder.**
  **For any cluster you are going to deploy, modify the example to meet your setup. Check each file in either 0-deploy or 0-stagging and search for #MODIFY_THIS.
 
 - In the NKP UI, go to the management cluster workspace and go in to the xp-apis project

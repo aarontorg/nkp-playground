@@ -44,7 +44,7 @@ apiVersion: dispatch.d2iq.io/v1alpha3
 gitRepository:
   interval: 1m0s
   ref:
-    branch: main
+    branch: main #Modify to your branch
   secretRef:
     name: nkp-playground
   timeout: 1m0s
@@ -64,7 +64,7 @@ apiVersion: dispatch.d2iq.io/v1alpha3
 gitRepository:
   interval: 1m0s
   ref:
-    branch: main
+    branch: main #Modify to your branch
   secretRef:
     name: nkp-playground
   timeout: 1m0s
