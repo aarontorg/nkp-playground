@@ -50,13 +50,14 @@ Ensure you are in the home directory of the nkp-playground git repo
 
 ### SETUP
 
-#### Create the project
+#### Create a project for setup of workspaces and project
 
 - In the NKP UI, go to the Management Cluster Workspace
-- Create a new project named **xp-apis** (Use the same name for ID/Namespace)
+- Create a new project named **management** (Use the same name for ID/Namespace)
 - Add project to only the Kommander Host
-- Give admin permission to xp-apis service account (hack)
-    - `kubectl create clusterrolebinding xp-apis-admin --clusterrole=cluster-admin --serviceaccount=xp-apis:xp-apis`
+- Add a secret to the project for github with username and password as the keys
+- Give admin permission to management service account (hack)
+    - `kubectl create clusterrolebinding xp-management-admin --clusterrole=cluster-admin --serviceaccount=management:management`
 
 #### Create a Workspace for your workload clusters
 
