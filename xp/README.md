@@ -68,24 +68,28 @@ The command below will run a script to create workspace-0, workspace-1, and work
 
 - `./xp/misc/create-workspaces.sh`
 
-
 #### Create management Gitops Source
 
 When the management gitops source is created it will do the following:
 1. Create a GitOps source in the nkp-playground project called apis. This will load the crossplane api and compositions.
 2. Create a GipOps source in the nkp-playground project called workload-clusters. This will be used to create workload clusters.
 
-- In the NKP-UI, Go to the Management Cluster Workspace.
-- Go to Projects and select the nkp-playground project
-- Go to the secrets tab and Create a secret named **nkp-playgound** for the nkp-playground project repo with username and password keys
-- Go to the Continuous Deployment (CD) tab
-- Add a new GitOps source in the Project
+##### Steps
+
+1. Modify xp/management/mgmt-config.yaml
+    - Change the branch to your branch (two locations)
+    - Check in your changes to git
+2. NKP-UI, Go to the Management Cluster Workspace.
+3. Go to Projects and select the nkp-playground project
+4. Go to the secrets tab and Create a secret named **nkp-playgound** for the nkp-playground project repo with username and password keys
+5. Go to the Continuous Deployment (CD) tab
+6. Add a new GitOps source in the Project
     - **Name:** management
     - **Repository URL:** https://github.com/aarontorg/nkp-playground.git
-    - **Branch:** main
+    - **Branch:** [your branch]
     - **Path:** ./xp/management
     - **Primary Git Secret:** nkp-playground
-- To verify install of the Crossplane APIs
+7. To verify install of the Crossplane APIs
     - `kubectl get gitopsrepositories,xrd,compositions -n nkp-playground` 
         - GitOpsRepositories: management,apis, workload-clusters 
         - XRD: workloadclusters.nkp.io
@@ -93,11 +97,15 @@ When the management gitops source is created it will do the following:
 
 #### Creating Workload Clusters
 
-We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize the gitops repo called workload-clusters within the nkp-playground project we created on the management cluster.
+We can now create clusters with newly create Crossplane created WorkloadCluster xrd/api and the workload composition. To do this, we'll utilize gitops repos called workload-clusters within the nkp-playground project we created on the management cluster.
 
 Do the following to create a workload cluster
 1. Modify **xp/workload-clusters/stage/workload1-cluster.yaml**. Look for #MODIFY_THIS and make changes to fit your environment.
 2. Move **xp/workload-clusters/stage/workload1-cluster.yaml** to **xp/workload-clusters/deploy/workload1-cluster.yaml**
+3. Commit and push changes to your branch
+    - `git add .`
+    - `git commit -m "your message"`
+    - `git push`
 
 - After 1-2 minutes a new cluster should start creating
     - `kubectl get nkpclusters -A` [new cluster should be in list]
