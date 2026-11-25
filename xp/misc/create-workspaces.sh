@@ -8,5 +8,5 @@ WORKSPACES=(
 )
 
 for ws in "${WORKSPACES[@]}"; do
-  nkp create workspace "$ws"
+  nkp create workspace "$ws" -n "$ws"
 done
