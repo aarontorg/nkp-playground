@@ -112,8 +112,11 @@ Do the following to create a workload cluster
     - `kubectl get providers.kubernetes` [new provider config with the clusters name]
     - Showcase the gatekeeper security policy that has been created on the workload cluster ...
         - Generate a kubeconfig for the new workload cluster:
-            `nkp get kubeconfig --cluster-name ws-1-workload-1 -n workspace-1 > ~/ws-1-workload-1.conf
-        - export KUBECONFIG=~/ws-1-workload-1.conf
+            - `nkp get kubeconfig --cluster-name ws-1-workload-1 -n workspace-1 > ~/.kube/ws-1-workload-1.conf`
+        - Add to kubeconfig
+            - `KUBECONFIG=~/.kube/config:~/.kube/ws-1-workload-1.conf kubectl config view --flatten > /tmp/merged-config && mv /tmp/merged-config ~/.kube/config`
+mv ~/.kube/config.merged ~/.kube/config
+        -  Switch kubectl context to the workload cluster
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get constrainttemplates`
         - `kubectl --kubeconfig ~/.kube/workload-1.conf get k8sdisallowlatesttag`
     - Try to run a pod on the new workload cluster with the latest tag
@@ -133,3 +136,5 @@ Within the repo there are two folders 0-deploy and 0-stagging. As mentioned, any
 - Create clusters with custom APIs utilizing crossplane compositions and CAPI APIs.
 - NKP will automatically deploy a working version of gatekeeper to all workload clusters
 - Automatically deploy policy or any other type of object as desired
+
+
