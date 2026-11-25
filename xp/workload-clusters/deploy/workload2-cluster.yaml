@@ -8,7 +8,7 @@ spec:
       name: workload
   workloadClusterName: ws-2-workload-1 # Change name if you want
   workSpaceName: workspace-2
-  nkpVersion: v2.19.0 # update when needed
+  nkpVersion: v2.19.1 # update when needed
   pc:
     key: 'nx2Tech258!' #MODIFY_THIS
     ipAddress: 10.38.4.7 #MODIFY_THIS
