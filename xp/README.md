@@ -1,7 +1,6 @@
 # NKP and Crossplane
 
-NKP is a platform to standardize kubernetes operations. Crossplane is a tool to allow you to build custom APIs to further standardization of infrastructure delivery. Together,
-they become a very powerful combination to deliver the quintessential cloud native platform!
+NKP is a platform to standardize kubernetes operations. Crossplane is a tool to allow you to build custom APIs to further standardization of infrastructure delivery. Together, they become a very powerful combination to deliver the quintessential cloud native platform!
 
 ## What will following these steps do
 
